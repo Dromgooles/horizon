@@ -3,8 +3,7 @@
 
   @param {object} block - The block object with settings
 
-  Usage:
-  {% render 'dromgooles-newsletter', block: block %}
+  Usage: {% render 'dromgooles-newsletter', block: block %}
 {%- enddoc -%}
 
 {% liquid
@@ -41,7 +40,9 @@
   {{ block.shopify_attributes }}
 >
   {%- if block_settings.heading != blank -%}
-    <{{ heading_preset }} class="dromgooles-newsletter__heading {{ heading_preset }}">{{ block_settings.heading }}</{{ heading_preset }}>
+    <{{ heading_preset }} class="dromgooles-newsletter__heading {{ heading_preset }}">
+      {{- block_settings.heading -}}
+    </{{ heading_preset }}>
   {%- endif -%}
 
   {%- if block_settings.text != blank -%}
@@ -139,21 +140,21 @@
   }
 
   /* Form alignment based on text alignment */
-  .dromgooles-newsletter[style*="--newsletter-alignment-mobile: center"] .dromgooles-newsletter__form {
+  .dromgooles-newsletter[style*='--newsletter-alignment-mobile: center'] .dromgooles-newsletter__form {
     margin-inline: auto;
   }
 
   @media screen and (min-width: 750px) {
-    .dromgooles-newsletter[style*="--newsletter-alignment: left"] .dromgooles-newsletter__form {
+    .dromgooles-newsletter[style*='--newsletter-alignment: left'] .dromgooles-newsletter__form {
       margin-inline-start: 0;
       margin-inline-end: auto;
     }
 
-    .dromgooles-newsletter[style*="--newsletter-alignment: center"] .dromgooles-newsletter__form {
+    .dromgooles-newsletter[style*='--newsletter-alignment: center'] .dromgooles-newsletter__form {
       margin-inline: auto;
     }
 
-    .dromgooles-newsletter[style*="--newsletter-alignment: right"] .dromgooles-newsletter__form {
+    .dromgooles-newsletter[style*='--newsletter-alignment: right'] .dromgooles-newsletter__form {
       margin-inline-start: auto;
       margin-inline-end: 0;
     }
@@ -200,23 +201,23 @@
 
   /* Button alignment based on text alignment */
   @media screen and (max-width: 749px) {
-    .dromgooles-newsletter[style*="--newsletter-alignment-mobile: center"] .dromgooles-newsletter__button {
+    .dromgooles-newsletter[style*='--newsletter-alignment-mobile: center'] .dromgooles-newsletter__button {
       align-self: center;
     }
   }
 
   @media screen and (min-width: 750px) {
-    .dromgooles-newsletter[style*="--newsletter-alignment: center"] .dromgooles-newsletter__button {
+    .dromgooles-newsletter[style*='--newsletter-alignment: center'] .dromgooles-newsletter__button {
       align-self: center;
     }
 
-    .dromgooles-newsletter[style*="--newsletter-alignment: right"] .dromgooles-newsletter__button {
+    .dromgooles-newsletter[style*='--newsletter-alignment: right'] .dromgooles-newsletter__button {
       align-self: flex-end;
     }
   }
 
   /* Full width button overrides alignment */
-  .dromgooles-newsletter[style*="--newsletter-btn-width: 100%"] .dromgooles-newsletter__button {
+  .dromgooles-newsletter[style*='--newsletter-btn-width: 100%'] .dromgooles-newsletter__button {
     align-self: stretch;
   }
 

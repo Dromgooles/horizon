@@ -2,7 +2,11 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'dromgooles-promo-banner', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{% render 'dromgooles-promo-banner',
+  children: children,
+  settings: block.settings,
+  shopify_attributes: block.shopify_attributes
+%}
 
 {% schema %}
 {
