@@ -10,13 +10,12 @@
 {
   "current": {
     "logo": "shopify://shop_images/Dromgooles_Logo.png",
-    "page_width": "narrow",
     "logo_height": 36,
     "logo_height_mobile": 28,
-    "type_body_font": "inter_n4",
-    "type_subheading_font": "inter_n5",
-    "type_heading_font": "inter_n7",
-    "type_accent_font": "inter_n7",
+    "type_body_font": "lato_n4",
+    "type_subheading_font": "lato_n6",
+    "type_heading_font": "lato_n8",
+    "type_accent_font": "lato_n7",
     "type_size_paragraph": "14",
     "type_line_height_paragraph": "body-loose",
     "type_font_h1": "heading",
@@ -43,6 +42,7 @@
     "type_font_h6": "subheading",
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
+    "page_width": "narrow",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "card_hover_effect": "none",
@@ -299,7 +299,7 @@
       },
       "scheme-6": {
         "settings": {
-          "background": "rgba(0,0,0,0)",
+          "background": "#0b3c5d",
           "foreground_heading": "#ffffff",
           "foreground": "#f2f2f2",
           "primary": "#eaeaea",
