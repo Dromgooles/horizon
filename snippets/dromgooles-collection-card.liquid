@@ -1,0 +1,135 @@
+{%- doc -%}
+  Dromgoole's custom collection card with background color/gradient support.
+
+  @param {object} collection - Collection object
+  @param {boolean} [hide_title] - Hide the collection title
+  @param {object} [block] - The block object with settings
+
+  @example
+  {% render 'dromgooles-collection-card', collection: collection, hide_title: false %}
+{%- enddoc -%}
+
+{% assign block_settings = block.settings %}
+{% assign display_collection = block_settings.collection | default: collection %}
+
+{% if display_collection %}
+  {% assign collection_url = display_collection.url %}
+  {% assign collection_title = block_settings.custom_title | default: display_collection.title %}
+
+  {% comment %} Use custom image if provided, otherwise use collection featured image {% endcomment %}
+  {% if block_settings.custom_image %}
+    {% assign collection_image = block_settings.custom_image %}
+  {% else %}
+    {% assign collection_image = display_collection.featured_image %}
+  {% endif %}
+{% else %}
+  {% assign collection_url = '#' %}
+  {% assign collection_title = block_settings.custom_title | default: 'Collection' %}
+  {% assign collection_image = null %}
+{% endif %}
+
+<a
+  href="{{ collection_url }}"
+  class="dromgooles-collection-card size-style"
+  style="
+    {% render 'size-style', settings: block_settings %}
+    {% if block_settings.background_gradient != blank %}
+      background: {{ block_settings.background_gradient }};
+    {% elsif block_settings.background_color != blank %}
+      background: {{ block_settings.background_color }};
+    {% endif %}
+    {% if block_settings.border_radius > 0 %}
+      border-radius: {{ block_settings.border_radius }}%;
+      overflow: hidden;
+    {% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {% if collection_image %}
+    <div class="dromgooles-collection-card__media">
+      {{
+        collection_image
+        | image_url: width: 800
+        | image_tag:
+          loading: 'lazy',
+          class: 'dromgooles-collection-card__image',
+          widths: '200, 300, 400, 500, 600, 700, 800',
+          sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw'
+      }}
+    </div>
+  {% endif %}
+
+  {% unless hide_title %}
+    <div
+      class="dromgooles-collection-card__title"
+      {% if block_settings.text_color != blank %}
+        style="color: {{ block_settings.text_color }};"
+      {% endif %}
+    >
+      {{ collection_title }}
+    </div>
+  {% endunless %}
+</a>
+
+{% stylesheet %}
+  .dromgooles-collection-card {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .dromgooles-collection-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .dromgooles-collection-card__media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .dromgooles-collection-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: var(--image-style, cover);
+    object-position: center;
+  }
+
+  /* Image style variants */
+  .dromgooles-collection-card[data-image-style='contain'] .dromgooles-collection-card__image {
+    object-fit: contain;
+  }
+
+  .dromgooles-collection-card__title {
+    padding: var(--padding-sm) var(--padding-xs);
+    text-align: center;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  /* When card has background, position title absolutely */
+  .dromgooles-collection-card[style*='background'] .dromgooles-collection-card__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+  }
+{% endstylesheet %}
+
+<script>
+  (() => {
+    const card = document.currentScript.previousElementSibling;
+    if (card && card.classList.contains('dromgooles-collection-card')) {
+      const imageStyle = '{{ block_settings.image_style }}';
+      if (imageStyle) {
+        card.dataset.imageStyle = imageStyle;
+        card.style.setProperty('--image-style', imageStyle);
+      }
+    }
+  })();
+</script>

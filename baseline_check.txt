@@ -1,0 +1,421 @@
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  blocks/_card.liquid                                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UnrecognizedRenderSnippetArguments                               │
+│  Unknown argument 'background_video_loop' in render tag for snippet          │
+│  'background-media'.                                                         │
+│                                                                              │
+│  75  background_video_loop: true,                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  blocks/_collection-card-image.liquid                                        │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidRenderSnippetArgumentTypes                                  │
+│  Type mismatch for argument 'image_source': expected object, got boolean     │
+│                                                                              │
+│  15  image_source: blank,                                                    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  blocks/_hotspot-product.liquid                                              │
+│                                                                              │
+│                                                                              │
+│  [warning]: UnrecognizedRenderSnippetArguments                               │
+│  Unknown argument 'block' in render tag for snippet 'price'.                 │
+│                                                                              │
+│  57  {% render 'price', product_resource: hotspot_product, block: block %}   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  layout/password.liquid                                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: RemoteAsset                                                      │
+│  Use one of the asset_url filters to serve assets for better performance.    │
+│                                                                              │
+│  20  href="#MainContent"                                                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  layout/theme.liquid                                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: RemoteAsset                                                      │
+│  Use one of the asset_url filters to serve assets for better performance.    │
+│                                                                              │
+│  18  href="#MainContent"                                                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/header.liquid                                                      │
+│                                                                              │
+│                                                                              │
+│  [error]: UniqueStaticBlockId                                                │
+│  The id 'header-menu' is already being used by another static block          │
+│                                                                              │
+│  53  content_for 'block', type: '_header-menu', id: 'header-menu', variant:  │
+│   'mobile'                                                                   │
+│                                                                              │
+│                                                                              │
+│  [error]: UniqueStaticBlockId                                                │
+│  The id 'header-menu' is already being used by another static block          │
+│                                                                              │
+│  57  content_for 'block', type: '_header-menu', id: 'header-menu', variant:  │
+│   'navigation_bar', transparent: transparent                                 │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/account-drawer.liquid                                              │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  12  {{ block.shopify_attributes }}                                          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/blog-comment-form.liquid                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'comment' used.                                              │
+│                                                                              │
+│  52  if blog.moderated? and comment.status == 'unapproved'                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/cart-drawer.liquid                                                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  44  data-section-id="{{ section.id }}"                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  19  {{ block.shopify_attributes }}                                          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/cart-icon-component.liquid                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UnrecognizedRenderSnippetArguments                               │
+│  Unknown argument 'test_id' in render tag for snippet 'cart-bubble'.         │
+│                                                                              │
+│  18  {% render 'cart-bubble', limit: 100, live_region: true, test_id:        │
+│  test_id %}                                                                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'test_id' used.                                              │
+│                                                                              │
+│  18  {% render 'cart-bubble', limit: 100, live_region: true, test_id:        │
+│  test_id %}                                                                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/cart-summary.liquid                                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  48  {% render 'cart-discount', section_id: section.id %}                    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/contact-form.liquid                                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  23  {% assign form_id = block.id | default: section.id | prepend:           │
+│  'ContactForm-' %}                                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  23  {% assign form_id = block.id | default: section.id | prepend:           │
+│  'ContactForm-' %}                                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  21  {{ block.shopify_attributes }}                                          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/divider.liquid                                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  24  {{- block.shopify_attributes -}}                                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/drawer-localization.liquid                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  14  assign background_brightness =                                          │
+│  block.settings.color_scheme.settings.background | color_brightness          │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  21  assign localization_font = '--menu-localization-font:                   │
+│  var(--font-[localization_font]--family); ' | replace:                       │
+│  '[localization_font]', section.settings.localization_font                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  31  block_id: block.id,                                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  120  block_id: block.id                                                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/dropdown-localization.liquid                                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  11  assign background_brightness =                                          │
+│  section.settings.color_scheme.settings.background | color_brightness        │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  18  assign localization_font = '--menu-localization-font:                   │
+│  var(--font-[localization_font]--family); ' | replace:                       │
+│  '[localization_font]', section.settings.localization_font                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  19  assign localization_font_size = '--menu-localization-font-size:         │
+│  [localization_font_size]; ' | replace: '[localization_font_size]',          │
+│  section.settings.localization_font_size                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  31  block_id: block.id                                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  96  block_id: block.id                                                      │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/jumbo-text.liquid                                                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  12  assign block_settings = block_settings | default: block.settings        │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  49  {{ block.shopify_attributes }}                                          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/localization-form.liquid                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'back' used.                                                 │
+│                                                                              │
+│  51  return_to: back,                                                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/product-media-gallery-content.liquid                               │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  137  render 'util-product-media-sizes-attr', block: block, section:         │
+│  section, settings: settings, is_first_image: true, is_single_column: true,  │
+│   needs_both_sizes: true                                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  137  render 'util-product-media-sizes-attr', block: block, section:         │
+│  section, settings: settings, is_first_image: true, is_single_column: true,  │
+│   needs_both_sizes: true                                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  144  render 'util-product-media-sizes-attr', block: block, section:         │
+│  section, settings: settings, is_first_image: false, is_single_column:       │
+│  is_single_column, needs_both_sizes: needs_both_sizes                        │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  144  render 'util-product-media-sizes-attr', block: block, section:         │
+│  section, settings: settings, is_first_image: false, is_single_column:       │
+│  is_single_column, needs_both_sizes: needs_both_sizes                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/quantity-selector.liquid                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'block' used.                                                │
+│                                                                              │
+│  40  {{- block.shopify_attributes -}}                                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/slideshow.liquid                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: UnusedDocParam                                                   │
+│  The parameter 'content_position' is defined but not used in this file.      │
+│                                                                              │
+│  26  @param {string} [content_position] - The position of the content,       │
+│  defaults to 'on-media'                                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'disabled' used.                                             │
+│                                                                              │
+│  93  {% if show_arrows and disabled != true %}                               │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'disabled' used.                                             │
+│                                                                              │
+│  96  {% if slideshow_arrows and disabled != true %}                          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/variant-main-picker.liquid                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  12  assign button_background_brightness =                                   │
+│  section.settings.color_scheme.settings.foreground | color_brightness        │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  50  assign fieldset_id = section.id | append: '-' | append:                 │
+│  product_resource.id | append: '-' | append: product_option.name |           │
+│  handleize                                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'section' used.                                              │
+│                                                                              │
+│  22  data-section-id="{{ section.id }}"                                      │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/video.liquid                                                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: UnusedDocParam                                                   │
+│  The parameter 'section_id' is defined but not used in this file.            │
+│                                                                              │
+│  18  @param {string} section_id - The section ID                             │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Theme Check Summary.                                                        │
+│                                                                              │
+│  317 files inspected with 42 total offenses found across 22 files.           │
+│  2 errors.                                                                   │
+│  40 warnings.                                                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

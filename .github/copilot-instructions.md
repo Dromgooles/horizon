@@ -307,3 +307,251 @@ git fetch upstream && git pull upstream main
 - [Theme Blocks Documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks)
 - [Horizon GitHub Repository](https://github.com/Shopify/horizon)
 - [Shopify CLI Documentation](https://shopify.dev/docs/themes/tools/cli)
+
+---
+
+## Dromgoole's Custom Files Reference
+
+### Core Files
+
+#### assets/dromgooles.css
+Contains all CSS customizations organized into sections:
+1. CSS Custom Property Extensions - Brand colors as CSS variables
+2. Typography Utilities - Text alignment, font weight helpers
+3. Color Background Utilities - Product color coding backgrounds (30+ color classes)
+4. Border Radius Utilities - Rounded corner helpers
+5. Layout & Spacing Utilities - Flexbox, display, gap helpers
+6. Card & Product Grid Customizations - Product card styling
+7. Header Enhancements - Non-invasive header improvements
+8. Component-Specific Overrides - Modal, quick-add, price styling
+9. Responsive Adjustments - Mobile/tablet specific styles
+10. Print Styles - Optimized printing
+
+#### snippets/dromgooles-styles.liquid
+Loader snippet that includes the custom CSS.
+
+### Custom Theme Blocks
+
+#### dromgooles-collection-card
+**Files:** `blocks/dromgooles-collection-card.liquid` + `snippets/dromgooles-collection-card.liquid`
+
+**Features:**
+- Custom images (override collection featured image)
+- Background colors and gradients
+- Circular swatches (for "Shop by Color" grids)
+- Border radius control (0-50% for circles)
+- Image fit options (cover/contain)
+- Custom titles and hide title option
+- Responsive sizing
+
+**Settings:**
+- Collection picker
+- Custom image override
+- Hide title checkbox
+- Custom title text
+- Background color/gradient
+- Text color
+- Image style (cover/contain)
+- Border radius (0-50%)
+- Responsive width/height controls
+
+#### dromgooles-promo-banner
+**Files:** `blocks/dromgooles-promo-banner.liquid` + `snippets/dromgooles-promo-banner.liquid`
+
+**Features:**
+- Background image with overlay opacity control
+- Gradient backgrounds
+- Solid color backgrounds
+- Text and button
+- Flexible text alignment
+- Configurable button styles
+- Minimum height control
+
+**Settings:**
+- Title and richtext content
+- Background image with overlay opacity
+- Background color/gradient
+- Button label, link, and style
+- Text alignment (left/center/right)
+- Minimum height (200-800px)
+- Responsive sizing
+
+### Custom Sections
+
+#### dromgooles-collection-grid
+**File:** `sections/dromgooles-collection-grid.liquid`
+
+**Features:**
+- Accepts `@theme` and `@app` blocks
+- Responsive column control (desktop/tablet/mobile)
+- Configurable gap between items
+- Section header with title and description
+- Header alignment control
+- Uses Horizon's spacing and color scheme system
+
+**Settings:**
+- Section title and description
+- Title size (h1-h6)
+- Header alignment
+- Columns: 1-6 (desktop), 1-4 (tablet), 1-3 (mobile)
+- Gap: 0-60px
+- Section width (full-width/page-width)
+- Color scheme
+- Padding (top/bottom, desktop/mobile)
+
+**Example composition:**
+```json
+{
+  "type": "dromgooles-collection-grid",
+  "settings": {
+    "title": "Shop by Color",
+    "columns_desktop": 6,
+    "columns_mobile": 3
+  },
+  "blocks": [
+    {
+      "type": "dromgooles-collection-card",
+      "settings": {
+        "collection": "red-pens",
+        "background_color": "#e53935",
+        "border_radius": 50
+      }
+    }
+  ]
+}
+```
+
+## Brand Colors
+
+| Color | Hex | RGB | Usage |
+|-------|-----|-----|-------|
+| Orange | #c06014 | 192, 96, 20 | Primary accent, buttons |
+| Blue | #0b3c5d | 11, 60, 93 | Secondary accent |
+| Gray | #d1d1d1 | 209, 209, 209 | Background variation |
+
+## CSS Custom Properties
+
+Use these in custom sections/snippets/blocks:
+
+```css
+/* Brand colors (RGB triplet for rgba() usage) */
+var(--dromgooles-orange)    /* 192, 96, 20 */
+var(--dromgooles-blue)      /* 11, 60, 93 */
+var(--dromgooles-gray)      /* 209, 209, 209 */
+
+/* Direct hex values */
+var(--dromgooles-orange-hex)  /* #c06014 */
+var(--dromgooles-blue-hex)    /* #0b3c5d */
+var(--dromgooles-gray-hex)    /* #d1d1d1 */
+```
+
+## Utility Classes
+
+### Color Backgrounds
+Available color classes for product categorization:
+`color-background-orange`, `color-background-blue`, `color-background-gold`, `color-background-red`, `color-background-burgundy`, `color-background-purple`, `color-background-pink`, `color-background-green`, `color-background-teal`, `color-background-yellow`, `color-background-bronze`, `color-background-copper`, `color-background-brown`, `color-background-silver`, `color-background-navy`, `color-background-coral`, and 15+ more.
+
+### Border Radius
+`border-radius-circle`, `border-radius-pill`, `border-radius-lg`
+
+### Layout
+`d-flex`, `justify-between`, `align-center`, `gap-1`, `gap-2`, `gap-3`
+
+### Typography
+`text-center`, `text-left`, `text-right`, `font-weight-bold`
+
+## Collection Landing Page Templates
+
+Create custom templates in `templates/collection.*.json` for featured collections.
+
+**Template Structure Pattern:**
+```json
+{
+  "sections": {
+    "hero": {
+      "type": "hero"
+    },
+    "shop_by_colors": {
+      "type": "dromgooles-collection-grid",
+      "settings": {
+        "title": "Shop by Color",
+        "columns_desktop": 6
+      },
+      "blocks": {
+        "red": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "red-fountain-pens",
+            "background_color": "#e53935",
+            "border_radius": 50
+          }
+        }
+      }
+    }
+  },
+  "order": ["hero", "shop_by_colors"]
+}
+```
+
+## Dawn to Horizon Migration Mapping
+
+### ✅ Fully Migrated Custom Components
+
+**dromgooles-collection-grid** - Migrated as custom section  
+**dromgooles-collection-card** - Created as theme block  
+**dromgooles-promo-banner** - Created as theme block
+
+### ✅ Not Needed - Horizon Has It
+
+**dromgooles-spacer** - Use Horizon's built-in `spacer` block
+
+### 🔍 Review Before Migrating
+
+Before creating custom versions, check if Horizon's built-in sections/blocks suffice:
+- **slideshow** - Check Horizon's slideshow section
+- **multicolumn** - Check Horizon's content sections  
+- **footer** - Check Horizon's footer blocks
+- **featured-collection** - Use Horizon's featured-collection block
+- **color-swatches** - Use dromgooles-collection-grid + dromgooles-collection-card
+- **main-product** - Check Horizon's product sections
+
+## Horizon-Specific Best Practices
+
+### Use Theme Blocks for Composition
+✅ **Good:** Flexible composition with `"type": "@theme"`  
+❌ **Avoid:** Hard-coded specific block types only
+
+### Use Inline Stylesheets in Snippets
+✅ **Good:** Scoped `{% stylesheet %}` in snippet  
+❌ **Avoid:** External CSS files for component styles
+
+### Leverage Horizon's Utility Snippets
+✅ **Good:** `{% render 'size-style', settings: block_settings %}`  
+❌ **Avoid:** Manual responsive sizing with inline styles
+
+### Use CSS Custom Properties
+✅ **Good:** `style="--custom-color: {{ block.settings.color }};"`  
+❌ **Avoid:** Direct color values in style attributes
+
+## Template JSON Validation Rules
+
+**Critical:** Horizon has strict validation for text blocks:
+1. All text content MUST be wrapped in HTML tags: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`, `<p>`, `<ul>`, `<ol>`
+2. Use `"type": "text"` instead of `"type": "heading"` (heading block type doesn't exist)
+3. Control text appearance with `"type_preset"`: `"h1"`, `"h2"`, `"h3"`, `"paragraph"`, etc.
+4. Always include `{{ block.shopify_attributes }}` on block root elements
+
+**Example valid text block:**
+```json
+{
+  "type": "text",
+  "settings": {
+    "type_preset": "h1",
+    "text": "<h1>My Heading Text</h1>"
+  }
+}
+```
+
+## Important: Output Guidelines
+
+**DO NOT generate documentation or summary markdown files unless explicitly requested by the user.** Keep responses concise and focused on implementation. When completing work, confirm completion briefly without creating new documentation files.

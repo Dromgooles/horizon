@@ -1,0 +1,464 @@
+/**
+ * Dromgoole's Fine Writing Instruments - Custom CSS Overrides for Horizon
+ * 
+ * This file contains CSS customizations for Dromgoole's store.
+ * It is loaded AFTER Horizon's base styles to override defaults.
+ * 
+ * Horizon Version: Latest
+ * Last Updated: 2025-12-15
+ * 
+ * Organization:
+ * 1. CSS Custom Property Extensions
+ * 2. Typography Utilities
+ * 3. Color Background Utilities
+ * 4. Border Radius Utilities
+ * 5. Layout & Spacing Utilities
+ * 6. Card & Product Grid Customizations
+ * 7. Header Enhancements
+ * 8. Component-Specific Overrides
+ * 9. Responsive Adjustments
+ */
+
+/* ============================================
+   1. CSS Custom Property Extensions
+   
+   Extend Horizon's color system with Dromgoole's brand colors.
+   These use the modern RGB triplet format for consistency.
+   ============================================ */
+
+:root {
+  /* Brand accent colors (for use with rgba()) */
+  --dromgooles-orange: 192, 96, 20; /* #c06014 */
+  --dromgooles-blue: 11, 60, 93; /* #0b3c5d */
+  --dromgooles-gray: 209, 209, 209; /* #d1d1d1 */
+
+  /* Direct hex values for border/background shortcuts */
+  --dromgooles-orange-hex: #c06014;
+  --dromgooles-blue-hex: #0b3c5d;
+  --dromgooles-gray-hex: #d1d1d1;
+}
+
+/* ============================================
+   2. Typography Utilities
+   ============================================ */
+
+/* Heading color override using scheme accent */
+.heading-accent-color {
+  color: rgb(var(--color-button));
+}
+
+/* Text alignment utilities */
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+
+/* Medium screen text alignment */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .medium-text-left {
+    text-align: left !important;
+  }
+  .medium-text-center {
+    text-align: center !important;
+  }
+  .medium-text-right {
+    text-align: right !important;
+  }
+}
+
+/* Font weight utilities */
+.font-weight-normal {
+  font-weight: 400 !important;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+/* Title wrapper alignment utilities (for custom sections) */
+.title-wrapper--center {
+  text-align: center;
+}
+.title-wrapper--left {
+  text-align: left;
+}
+.title-wrapper--right {
+  text-align: right;
+}
+
+/* ============================================
+   3. Color Background Utilities
+   
+   Product-specific background colors for visual categorization.
+   These provide consistent brand-aligned color coding.
+   ============================================ */
+
+/* Primary brand backgrounds */
+.color-background-orange {
+  background-color: var(--dromgooles-orange-hex) !important;
+}
+.color-background-blue {
+  background-color: var(--dromgooles-blue-hex) !important;
+}
+.color-background-gray {
+  background-color: var(--dromgooles-gray-hex) !important;
+}
+
+/* Product color backgrounds */
+.color-background-black {
+  background-color: #000000 !important;
+}
+.color-background-white {
+  background-color: #ffffff !important;
+}
+.color-background-red {
+  background-color: #e53935 !important;
+}
+.color-background-burgundy {
+  background-color: #6d2c3f !important;
+}
+.color-background-purple {
+  background-color: #8e44ad !important;
+}
+.color-background-pink {
+  background-color: #f8bbd9 !important;
+}
+.color-background-green {
+  background-color: #2e7d32 !important;
+}
+.color-background-darkgreen {
+  background-color: #1b5e20 !important;
+}
+.color-background-teal {
+  background-color: #009688 !important;
+}
+.color-background-turquoise {
+  background-color: #40e0d0 !important;
+}
+.color-background-yellow {
+  background-color: #fdd835 !important;
+}
+.color-background-gold {
+  background-color: #d4af37 !important;
+}
+.color-background-bronze {
+  background-color: #cd7f32 !important;
+}
+.color-background-copper {
+  background-color: #b87333 !important;
+}
+.color-background-brown {
+  background-color: #795548 !important;
+}
+.color-background-tan {
+  background-color: #d2b48c !important;
+}
+.color-background-silver {
+  background-color: #c0c0c0 !important;
+}
+.color-background-chrome {
+  background-color: #dbe4eb !important;
+}
+.color-background-gunmetal {
+  background-color: #2c3539 !important;
+}
+.color-background-rosegold {
+  background-color: #b76e79 !important;
+}
+.color-background-ivory {
+  background-color: #fffff0 !important;
+}
+.color-background-cream {
+  background-color: #fffdd0 !important;
+}
+.color-background-navy {
+  background-color: #001f3f !important;
+}
+.color-background-coral {
+  background-color: #ff7f50 !important;
+}
+.color-background-peach {
+  background-color: #ffcba4 !important;
+}
+.color-background-lavender {
+  background-color: #e6e6fa !important;
+}
+.color-background-mint {
+  background-color: #98fb98 !important;
+}
+
+/* Transparent/special backgrounds */
+.color-background-transparent {
+  background-color: transparent !important;
+}
+.color-background-inherit {
+  background-color: inherit !important;
+}
+
+/* ============================================
+   4. Border Radius Utilities
+   ============================================ */
+
+.border-radius-0 {
+  border-radius: 0 !important;
+}
+.border-radius-sm {
+  border-radius: 4px !important;
+}
+.border-radius-md {
+  border-radius: 8px !important;
+}
+.border-radius-lg {
+  border-radius: 16px !important;
+}
+.border-radius-xl {
+  border-radius: 24px !important;
+}
+.border-radius-pill {
+  border-radius: 9999px !important;
+}
+.border-radius-circle {
+  border-radius: 50% !important;
+}
+
+/* Specific pixel values for legacy support */
+.border-radius-10 {
+  border-radius: 10px !important;
+}
+.border-radius-20 {
+  border-radius: 20px !important;
+}
+.border-radius-30 {
+  border-radius: 30px !important;
+}
+
+/* ============================================
+   5. Layout & Spacing Utilities
+   ============================================ */
+
+/* Display utilities */
+.d-none {
+  display: none !important;
+}
+.d-block {
+  display: block !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.d-grid {
+  display: grid !important;
+}
+
+/* Flexbox utilities */
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-row {
+  flex-direction: row !important;
+}
+.justify-start {
+  justify-content: flex-start !important;
+}
+.justify-center {
+  justify-content: center !important;
+}
+.justify-end {
+  justify-content: flex-end !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+.align-start {
+  align-items: flex-start !important;
+}
+.align-center {
+  align-items: center !important;
+}
+.align-end {
+  align-items: flex-end !important;
+}
+
+/* Gap utilities */
+.gap-0 {
+  gap: 0 !important;
+}
+.gap-1 {
+  gap: 0.5rem !important;
+}
+.gap-2 {
+  gap: 1rem !important;
+}
+.gap-3 {
+  gap: 1.5rem !important;
+}
+.gap-4 {
+  gap: 2rem !important;
+}
+
+/* Width utilities */
+.w-100 {
+  width: 100% !important;
+}
+.w-auto {
+  width: auto !important;
+}
+
+/* ============================================
+   6. Card & Product Grid Customizations
+   ============================================ */
+
+/* Product grid spacing adjustments */
+.product-grid .grid__item .card__information {
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .product-grid .grid__item .card__information {
+    padding: 0.5rem;
+  }
+}
+
+/* Featured product grid - custom column gap */
+@media screen and (min-width: 750px) {
+  .grid.featured-product-grid {
+    column-gap: 0;
+    row-gap: var(--grid-desktop-vertical-spacing);
+  }
+}
+
+/* Featured product grid item padding */
+.featured-product-grid .grid__item {
+  padding: var(--grid-desktop-vertical-spacing);
+}
+
+/* ============================================
+   7. Header Enhancements
+   
+   Non-invasive header improvements that work with
+   Horizon's default header structure.
+   ============================================ */
+
+/* Header icon hover enhancement */
+.header__icon:hover .icon {
+  transform: scale(1.07);
+  transition: transform 0.2s ease;
+}
+
+/* Cart icon accent color */
+.header__icon--cart .icon {
+  fill: rgb(var(--color-button));
+}
+
+/* Header link styling */
+.header__heading-link:hover .h2,
+.header__heading-link:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.header__heading-link .h2 {
+  line-height: 1;
+  color: rgba(var(--color-foreground), 0.75);
+  transition: color 0.2s ease;
+}
+
+/* ============================================
+   8. Component-Specific Overrides
+   ============================================ */
+
+/* Modal close button hover */
+.modal__close-button:hover .icon {
+  transform: scale(1.07);
+}
+
+/* Quick add button enhancements */
+.quick-add__submit {
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.quick-add__submit:active {
+  transform: scale(0.98);
+}
+
+/* Price display enhancements */
+.price--on-sale .price-item--regular {
+  opacity: 0.7;
+}
+
+/* Badge positioning refinements */
+.card__badge {
+  z-index: 1;
+}
+
+/* Footer images responsive */
+.footer img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   9. Responsive Adjustments
+   ============================================ */
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 749px) {
+  /* Reduce section padding on mobile */
+  .section-padding {
+    padding-top: calc(var(--padding-top) * 0.75);
+    padding-bottom: calc(var(--padding-bottom) * 0.75);
+  }
+
+  /* Stack flex items on mobile */
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+
+  /* Full width on mobile */
+  .mobile-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  /* Tablet stack utility */
+  .tablet-stack {
+    flex-direction: column !important;
+  }
+}
+
+/* Large screen enhancements */
+@media screen and (min-width: 990px) {
+  /* Ensure logo displays at proper size */
+  .header__heading-logo {
+    max-width: 300px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  /* Hide non-essential elements when printing */
+  .header__icons,
+  .footer,
+  .announcement-bar {
+    display: none !important;
+  }
+
+  /* Ensure content is visible */
+  .card__content,
+  .product__info-container {
+    background-color: white !important;
+    color: black !important;
+  }
+}

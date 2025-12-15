@@ -1,0 +1,290 @@
+{% comment %}
+  Dromgoole's Collection Grid Section for Horizon
+
+  A flexible collection grid that accepts any theme blocks,
+  with special support for dromgooles-collection-card blocks.
+
+  Usage: Collection landing pages (fountain-pens, bottled-ink, etc.)
+{% endcomment %}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    spacing-style
+    gap-style
+    dromgooles-collection-grid-{{ section.id }}
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+    --grid-columns-desktop: {{ section.settings.columns_desktop }};
+    --grid-columns-tablet: {{ section.settings.columns_tablet }};
+    --grid-columns-mobile: {{ section.settings.columns_mobile }};
+  "
+>
+  {% comment %} Section header with title and description {% endcomment %}
+  {% if section.settings.title != blank or section.settings.description != blank %}
+    <div class="section-header" style="text-align: {{ section.settings.header_alignment }};">
+      {% if section.settings.title != blank %}
+        <h2 class="{{ section.settings.title_size }}">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="section-description rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% comment %} Grid container for blocks {% endcomment %}
+  <div class="dromgooles-collection-grid__container">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .dromgooles-collection-grid__container {
+    display: grid;
+    gap: var(--gap, 2rem);
+    grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
+  }
+
+  @media screen and (min-width: 750px) {
+    .dromgooles-collection-grid__container {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .dromgooles-collection-grid__container {
+      grid-template-columns: repeat(var(--grid-columns-desktop, 4), 1fr);
+    }
+  }
+
+  .section-header {
+    margin-bottom: var(--padding-lg);
+  }
+
+  .section-description {
+    margin-top: var(--padding-sm);
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "DRO Collection Grid",
+  "tag": "section",
+  "class": "dromgooles-collection-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Shop by Collection"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        {
+          "value": "h6",
+          "label": "Extra Small"
+        },
+        {
+          "value": "h5",
+          "label": "Small"
+        },
+        {
+          "value": "h4",
+          "label": "Medium"
+        },
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra Large"
+        },
+        {
+          "value": "h1",
+          "label": "XX Large"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Grid layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between items",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "t:options.full_width"
+        },
+        {
+          "value": "page-width",
+          "label": "t:options.page_width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings.padding_bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings.padding_top_mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings.padding_bottom_mobile",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dromgoole's Collection Grid",
+      "blocks": [
+        {
+          "type": "dromgooles-collection-card"
+        },
+        {
+          "type": "dromgooles-collection-card"
+        },
+        {
+          "type": "dromgooles-collection-card"
+        },
+        {
+          "type": "dromgooles-collection-card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

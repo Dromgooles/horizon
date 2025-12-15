@@ -1,0 +1,11 @@
+{%- doc -%}
+  Loader snippet for Dromgoole's custom CSS overlay.
+  
+  This should be included in layout/theme.liquid or via a custom section
+  to load the custom brand styles after Horizon's base CSS.
+
+  @example
+  {% render 'dromgooles-styles' %}
+{%- enddoc -%}
+
+<link rel="stylesheet" href="{{ 'dromgooles.css' | asset_url }}">

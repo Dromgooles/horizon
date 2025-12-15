@@ -1,0 +1,147 @@
+{%- doc -%}
+  Dromgoole's promotional banner block with background image/gradient support.
+
+  @param {object} [block] - The block object with settings
+
+  @example
+  {% render 'dromgooles-promo-banner' %}
+{%- enddoc -%}
+
+{% assign block_settings = block.settings %}
+
+<div
+  class="dromgooles-promo-banner size-style"
+  style="
+    {% render 'size-style', settings: block_settings %}
+    --min-height: {{ block_settings.min_height }}px;
+    --overlay-opacity: {{ block_settings.overlay_opacity | divided_by: 100.0 }};
+    --text-alignment: {{ block_settings.text_alignment }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {% comment %} Background layer {% endcomment %}
+  {% if block_settings.background_image %}
+    <div class="dromgooles-promo-banner__background">
+      {{
+        block_settings.background_image
+        | image_url: width: 1920
+        | image_tag:
+          loading: 'lazy',
+          class: 'dromgooles-promo-banner__image',
+          widths: '400, 600, 800, 1000, 1200, 1400, 1600, 1920',
+          sizes: '100vw'
+      }}
+      <div class="dromgooles-promo-banner__overlay"></div>
+    </div>
+  {% elsif block_settings.background_gradient != blank %}
+    <div
+      class="dromgooles-promo-banner__background"
+      style="background: {{ block_settings.background_gradient }};"
+    ></div>
+  {% elsif block_settings.background_color != blank %}
+    <div class="dromgooles-promo-banner__background" style="background: {{ block_settings.background_color }};"></div>
+  {% endif %}
+
+  {% comment %} Content layer {% endcomment %}
+  <div class="dromgooles-promo-banner__content">
+    {% if block_settings.title != blank %}
+      <h2 class="dromgooles-promo-banner__title">
+        {{ block_settings.title }}
+      </h2>
+    {% endif %}
+
+    {% if block_settings.text != blank %}
+      <div class="dromgooles-promo-banner__text rte">
+        {{ block_settings.text }}
+      </div>
+    {% endif %}
+
+    {% if block_settings.button_label != blank and block_settings.button_link != blank %}
+      <a
+        href="{{ block_settings.button_link }}"
+        class="dromgooles-promo-banner__button {{ block_settings.button_style }}"
+      >
+        {{ block_settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .dromgooles-promo-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--min-height, 400px);
+    overflow: hidden;
+    border-radius: var(--media-radius, 0);
+  }
+
+  .dromgooles-promo-banner__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .dromgooles-promo-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .dromgooles-promo-banner__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, var(--overlay-opacity, 0.3));
+  }
+
+  .dromgooles-promo-banner__content {
+    position: relative;
+    z-index: 1;
+    padding: var(--padding-lg);
+    text-align: var(--text-alignment, center);
+    max-width: 800px;
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  /* Ensure text is readable on images */
+  .dromgooles-promo-banner:has(.dromgooles-promo-banner__image) .dromgooles-promo-banner__content {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .dromgooles-promo-banner__title {
+    margin-bottom: var(--padding-sm);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .dromgooles-promo-banner__text {
+    margin-bottom: var(--padding-md);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+
+  .dromgooles-promo-banner__button {
+    display: inline-block;
+    margin-top: var(--padding-sm);
+  }
+
+  @media screen and (max-width: 749px) {
+    .dromgooles-promo-banner {
+      min-height: calc(var(--min-height, 400px) * 0.7);
+    }
+
+    .dromgooles-promo-banner__content {
+      padding: var(--padding-md);
+    }
+  }
+{% endstylesheet %}

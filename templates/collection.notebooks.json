@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "disabled": true
+    },
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Notebooks & Paper</h1>",
+            "type_preset": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Premium notebooks and fountain pen-friendly paper.</p>",
+            "type_preset": "paragraph"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop All Notebooks",
+            "link": "shopify://collections/notebooks"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "media_type_1": "image",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": ["main", "hero"]
+}

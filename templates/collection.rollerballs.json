@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "disabled": true
+    },
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Rollerball Pens</h1>",
+            "type_preset": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Smooth writing rollerball pens for a premium writing experience.</p>",
+            "type_preset": "paragraph"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop All Rollerballs",
+            "link": "shopify://collections/all-rollerballs"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/delta-magnifica-red-oversize-rollerball-pen_1800x1800_88914214-6951-438a-a3b3-401d3fc06e6e.webp",
+        "content_position": "middle-left",
+        "text_alignment": "left",
+        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "special_selections": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "new_arrivals": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "new-arrivals-pens-pencils-copy",
+            "custom_title": "New Arrivals",
+            "hide_title": true,
+            "custom_image": "shopify://shop_images/New_Arrivals_69f7ecfd-e632-4847-8730-58bec7490fb2.png",
+            "image_style": "contain"
+          }
+        },
+        "limited_edition": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "limited-special-edition-rollerballs",
+            "custom_title": "Limited & Special Edition",
+            "hide_title": true,
+            "custom_image": "shopify://shop_images/Limited_Special.png",
+            "image_style": "contain"
+          }
+        },
+        "pre_owned": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "pre-owned-rollerballs",
+            "custom_title": "Pre-Owned",
+            "hide_title": true,
+            "custom_image": "shopify://shop_images/Pre_Owned.png",
+            "image_style": "contain"
+          }
+        }
+      },
+      "block_order": ["new_arrivals", "limited_edition", "pre_owned"],
+      "settings": {
+        "title": "Shop Special Selections",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": ["main", "hero", "special_selections"]
+}
