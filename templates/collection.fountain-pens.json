@@ -1,10 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-collection",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "hero": {
       "type": "hero",
@@ -39,12 +47,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/fountain-pens-dromgooles.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-6",
         "section_width": "full-width",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "color_scheme": "scheme-6"
       }
     },
     "special_selections": {
@@ -54,9 +58,9 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "new-arrivals-fountain-pens",
-            "custom_title": "New Arrivals",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/New_Arrivals_69f7ecfd-e632-4847-8730-58bec7490fb2.png",
+            "hide_title": true,
+            "custom_title": "New Arrivals",
             "image_style": "contain"
           }
         },
@@ -64,9 +68,9 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "limited-special-edition-fountain-pens",
-            "custom_title": "Limited & Special Edition",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Limited_Special.png",
+            "hide_title": true,
+            "custom_title": "Limited & Special Edition",
             "image_style": "contain"
           }
         },
@@ -74,9 +78,9 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "pre-owned-fountain-pens",
-            "custom_title": "Pre-Owned",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Pre_Owned.png",
+            "hide_title": true,
+            "custom_title": "Pre-Owned",
             "image_style": "contain"
           }
         }
@@ -133,12 +137,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/New_to_Fountain_Pens.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-2",
         "section_width": "page-width",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-2"
       }
     },
     "pilot_promo": {
@@ -174,12 +174,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/Pilot_Fountain_Pens.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-3",
         "section_width": "page-width",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-3"
       }
     },
     "popular_brands": {
@@ -189,8 +185,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "kaweco-1",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/KaWe_Co_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         },
@@ -198,8 +194,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "montblanc-1",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Mont_Blanc_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         },
@@ -207,8 +203,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "montegrappa",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Monteg_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         },
@@ -216,8 +212,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "esterbrook-1",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Esterbrook_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         },
@@ -225,8 +221,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "retro-51-collection",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Retro51_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         },
@@ -234,8 +230,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "sailor",
-            "hide_title": true,
             "custom_image": "shopify://shop_images/Sailor_Logo.png",
+            "hide_title": true,
             "image_style": "contain"
           }
         }
@@ -295,12 +291,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/Gold_Nib_Pens.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-4",
         "section_width": "page-width",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-4"
       }
     },
     "shop_by_color": {
@@ -495,30 +487,30 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "cartridge-fill-pens",
-            "custom_title": "Cartridge System",
             "custom_image": "shopify://shop_images/Cartridge_System.jpg",
-            "image_style": "cover",
-            "text_color": "#121212"
+            "custom_title": "Cartridge System",
+            "text_color": "#121212",
+            "image_style": "cover"
           }
         },
         "converter": {
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "converter-fill-pens",
-            "custom_title": "Converter System",
             "custom_image": "shopify://shop_images/Converter_System.png",
-            "image_style": "cover",
-            "text_color": "#121212"
+            "custom_title": "Converter System",
+            "text_color": "#121212",
+            "image_style": "cover"
           }
         },
         "piston": {
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "piston-fill-pens",
-            "custom_title": "Piston System",
             "custom_image": "shopify://shop_images/Piston_System.jpg",
-            "image_style": "cover",
-            "text_color": "#121212"
+            "custom_title": "Piston System",
+            "text_color": "#121212",
+            "image_style": "cover"
           }
         }
       },
@@ -564,11 +556,8 @@
         "text"
       ],
       "settings": {
-        "content_alignment": "center",
         "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80
+        "color_scheme": "scheme-1"
       }
     }
   },

@@ -1,10 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-collection",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "hero": {
       "type": "hero",
@@ -39,12 +47,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/Bottled_Ink_for_Fountain_Pens.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-1",
         "section_width": "full-width",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "color_scheme": "scheme-1"
       }
     },
     "shop_by_color": {
@@ -54,8 +58,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "black-ink",
-            "custom_title": "Black",
             "hide_title": false,
+            "custom_title": "Black",
             "background_color": "#1a1a1a",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -65,8 +69,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "blue-ink",
-            "custom_title": "Blue",
             "hide_title": false,
+            "custom_title": "Blue",
             "background_color": "#1c67fa",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -76,8 +80,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "red-ink",
-            "custom_title": "Red",
             "hide_title": false,
+            "custom_title": "Red",
             "background_color": "#be1717",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -87,8 +91,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "green-ink",
-            "custom_title": "Green",
             "hide_title": false,
+            "custom_title": "Green",
             "background_color": "#267826",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -98,8 +102,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "purple-ink",
-            "custom_title": "Purple",
             "hide_title": false,
+            "custom_title": "Purple",
             "background_color": "#591e7d",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -109,8 +113,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "orange-ink",
-            "custom_title": "Orange",
             "hide_title": false,
+            "custom_title": "Orange",
             "background_color": "#ed9327",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -120,8 +124,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "brown-ink",
-            "custom_title": "Brown",
             "hide_title": false,
+            "custom_title": "Brown",
             "background_color": "#56361d",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -131,8 +135,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "grey-silver-ink",
-            "custom_title": "Grey",
             "hide_title": false,
+            "custom_title": "Grey",
             "background_color": "#808080",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -142,8 +146,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "pink-ink",
-            "custom_title": "Pink",
             "hide_title": false,
+            "custom_title": "Pink",
             "background_color": "#ce3664",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -153,8 +157,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "yellow-ink",
-            "custom_title": "Yellow",
             "hide_title": false,
+            "custom_title": "Yellow",
             "background_color": "#dee02c",
             "text_color": "#000000",
             "border_radius": 50
@@ -164,8 +168,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "turquoise-ink",
-            "custom_title": "Turquoise",
             "hide_title": false,
+            "custom_title": "Turquoise",
             "background_color": "#30b7c9",
             "text_color": "#ffffff",
             "border_radius": 50
@@ -188,8 +192,8 @@
       "settings": {
         "title": "Shop By Color",
         "title_size": "h2",
-        "header_alignment": "center",
         "description": "<p>Find the perfect shade for your fountain pen</p>",
+        "header_alignment": "center",
         "columns_desktop": 6,
         "columns_tablet": 4,
         "columns_mobile": 3,
@@ -235,12 +239,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/EndlessAlchemyPoseidonsReef.png",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-2",
         "section_width": "page-width",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-2"
       }
     },
     "popular_brands": {
@@ -250,8 +250,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "colorverse",
-            "custom_title": "Colorverse",
             "hide_title": false,
+            "custom_title": "Colorverse",
             "image_style": "contain"
           }
         },
@@ -259,8 +259,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "diamine",
-            "custom_title": "Diamine",
             "hide_title": false,
+            "custom_title": "Diamine",
             "image_style": "contain"
           }
         },
@@ -268,8 +268,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "all-noodlers",
-            "custom_title": "Noodler's",
             "hide_title": false,
+            "custom_title": "Noodler's",
             "image_style": "contain"
           }
         },
@@ -277,8 +277,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "pilot-iroshizuku-ink",
-            "custom_title": "Pilot Iroshizuku",
             "hide_title": false,
+            "custom_title": "Pilot Iroshizuku",
             "image_style": "contain"
           }
         },
@@ -286,8 +286,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "sailor-ink-cartridges",
-            "custom_title": "Sailor",
             "hide_title": false,
+            "custom_title": "Sailor",
             "image_style": "contain"
           }
         },
@@ -295,8 +295,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "monteverde-bottled-ink",
-            "custom_title": "Monteverde",
             "hide_title": false,
+            "custom_title": "Monteverde",
             "image_style": "contain"
           }
         }
@@ -330,8 +330,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "ink-cartridges",
-            "custom_title": "Ink Cartridges",
             "hide_title": false,
+            "custom_title": "Ink Cartridges",
             "image_style": "contain"
           }
         },
@@ -339,8 +339,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "converters-1",
-            "custom_title": "Converters",
             "hide_title": false,
+            "custom_title": "Converters",
             "image_style": "contain"
           }
         },
@@ -348,8 +348,8 @@
           "type": "dromgooles-collection-card",
           "settings": {
             "collection": "blotter-papers",
-            "custom_title": "Blotter Paper",
             "hide_title": false,
+            "custom_title": "Blotter Paper",
             "image_style": "contain"
           }
         }
@@ -406,12 +406,8 @@
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/fountain-pens-dromgooles.jpg",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "color_scheme": "scheme-2",
         "section_width": "page-width",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-2"
       }
     },
     "help_cta": {
@@ -445,11 +441,8 @@
         "button"
       ],
       "settings": {
-        "content_alignment": "center",
         "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80
+        "color_scheme": "scheme-1"
       }
     }
   },

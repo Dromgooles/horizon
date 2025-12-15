@@ -1,8 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-collection",
-      "disabled": true
+      "disabled": true,
+      "settings": {}
     },
     "hero": {
       "type": "hero",
@@ -29,17 +39,20 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "media_type_1": "image",
-        "content_position": "middle-center",
-        "text_alignment": "center",
-        "color_scheme": "scheme-1",
         "section_width": "full-width",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "color_scheme": "scheme-1"
       }
     }
   },
-  "order": ["main", "hero"]
+  "order": [
+    "main",
+    "hero"
+  ]
 }
