@@ -1,21 +1,25 @@
-{% render 'dromgooles-promo-banner' %}
+{%- capture children %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+{% render 'dromgooles-promo-banner', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
 
 {% schema %}
 {
   "name": "DRO Promo Banner",
   "tag": null,
-  "settings": [
+  "blocks": [
     {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Special Offer"
+      "type": "@theme"
     },
     {
-      "type": "richtext",
-      "id": "text",
-      "label": "Text",
-      "default": "<p>Limited time offer on selected products</p>"
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
     },
     {
       "type": "image_picker",
@@ -44,59 +48,60 @@
     },
     {
       "type": "header",
-      "content": "Button"
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button label",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button link"
+      "content": "t:content.layout"
     },
     {
       "type": "select",
-      "id": "button_style",
-      "label": "Button style",
+      "id": "content_direction",
+      "label": "t:settings.direction",
       "options": [
         {
-          "value": "button",
-          "label": "Primary"
+          "value": "column",
+          "label": "t:options.vertical"
         },
         {
-          "value": "button-secondary",
-          "label": "Secondary"
-        },
-        {
-          "value": "link",
-          "label": "Link"
+          "value": "row",
+          "label": "t:options.horizontal"
         }
       ],
-      "default": "button"
-    },
-    {
-      "type": "header",
-      "content": "Layout"
+      "default": "column"
     },
     {
       "type": "select",
-      "id": "text_alignment",
-      "label": "Text alignment",
+      "id": "horizontal_alignment",
+      "label": "t:settings.alignment",
       "options": [
         {
-          "value": "left",
-          "label": "Left"
+          "value": "flex-start",
+          "label": "t:options.left"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:options.center"
         },
         {
-          "value": "right",
-          "label": "Right"
+          "value": "flex-end",
+          "label": "t:options.right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "t:settings.position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:options.top"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:options.bottom"
         }
       ],
       "default": "center"
@@ -105,11 +110,31 @@
       "type": "range",
       "id": "min_height",
       "label": "Minimum height",
-      "min": 200,
+      "min": 100,
       "max": 800,
       "step": 50,
       "unit": "px",
       "default": 400
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "t:settings.padding",
+      "min": 0,
+      "max": 100,
+      "step": 8,
+      "unit": "px",
+      "default": 32
     },
     {
       "type": "header",
@@ -125,22 +150,37 @@
           "label": "t:options.fit_content"
         },
         {
-          "value": "custom",
-          "label": "t:options.custom"
+          "value": "fill",
+          "label": "t:options.fill"
         }
       ],
-      "default": "fit-content"
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:settings.width_mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "fill"
     },
     {
       "type": "range",
-      "id": "custom_width",
-      "label": "t:settings.custom_width",
+      "id": "border_radius",
+      "label": "t:settings.border_radius",
       "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.width == \"custom\" }}"
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 0
     }
   ]
 }

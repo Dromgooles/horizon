@@ -1,0 +1,239 @@
+{%- doc -%}
+  Renders Dromgoole's newsletter signup block with optional first/last name fields.
+
+  @param {object} block - The block object with settings
+
+  Usage:
+  {% render 'dromgooles-newsletter', block: block %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign heading_preset = block_settings.heading_preset | default: 'h3'
+  assign text_size = block_settings.text_size | default: '0.875rem'
+  assign input_size = block_settings.input_size | default: '0.875rem'
+  assign input_border_radius = block_settings.input_border_radius | default: 4
+  assign button_border_radius = block_settings.button_border_radius | default: 4
+  assign button_width = block_settings.button_width | default: 'auto'
+  assign max_width = block_settings.max_width | default: 400
+  assign padding_top = block_settings.padding_top | default: 0
+  assign padding_bottom = block_settings.padding_bottom | default: 0
+%}
+
+<div
+  class="dromgooles-newsletter"
+  style="
+    --newsletter-width: {{ block_settings.width }};
+    --newsletter-width-mobile: {{ block_settings.width_mobile }};
+    --newsletter-alignment: {{ block_settings.alignment }};
+    --newsletter-alignment-mobile: {{ block_settings.alignment_mobile }};
+    --newsletter-btn-bg: {{ block_settings.button_color }};
+    --newsletter-btn-color: {{ block_settings.button_text_color }};
+    --newsletter-text-size: {{ text_size }};
+    --newsletter-input-size: {{ input_size }};
+    --newsletter-input-radius: {{ input_border_radius }}px;
+    --newsletter-btn-radius: {{ button_border_radius }}px;
+    --newsletter-btn-width: {{ button_width }};
+    --newsletter-max-width: {{ max_width }}px;
+    --newsletter-padding-top: {{ padding_top }}px;
+    --newsletter-padding-bottom: {{ padding_bottom }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if block_settings.heading != blank -%}
+    <{{ heading_preset }} class="dromgooles-newsletter__heading {{ heading_preset }}">{{ block_settings.heading }}</{{ heading_preset }}>
+  {%- endif -%}
+
+  {%- if block_settings.text != blank -%}
+    <p class="dromgooles-newsletter__text">{{ block_settings.text }}</p>
+  {%- endif -%}
+
+  {%- form 'customer', id: 'DromgoolesNewsletter', class: 'dromgooles-newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+    <input
+      type="email"
+      name="contact[email]"
+      id="NewsletterEmail-{{ block.id }}"
+      placeholder="{{ block_settings.email_placeholder | default: 'Email' }}"
+      aria-required="true"
+      autocorrect="off"
+      autocapitalize="off"
+      autocomplete="email"
+      required
+      class="dromgooles-newsletter__input"
+    >
+
+    {%- if block_settings.show_name_fields -%}
+      <div class="dromgooles-newsletter__name-fields">
+        <input
+          type="text"
+          name="contact[first_name]"
+          id="NewsletterFirstName-{{ block.id }}"
+          placeholder="{{ block_settings.first_name_placeholder | default: 'First Name' }}"
+          autocomplete="given-name"
+          class="dromgooles-newsletter__input"
+        >
+        <input
+          type="text"
+          name="contact[last_name]"
+          id="NewsletterLastName-{{ block.id }}"
+          placeholder="{{ block_settings.last_name_placeholder | default: 'Last Name' }}"
+          autocomplete="family-name"
+          class="dromgooles-newsletter__input"
+        >
+      </div>
+    {%- endif -%}
+
+    <button type="submit" class="dromgooles-newsletter__button">
+      {{ block_settings.button_text | default: 'Submit' }}
+    </button>
+
+    {%- if form.errors -%}
+      <p class="dromgooles-newsletter__message dromgooles-newsletter__message--error" role="alert">
+        {{ form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email }}
+      </p>
+    {%- endif -%}
+
+    {%- if form.posted_successfully? -%}
+      <p class="dromgooles-newsletter__message dromgooles-newsletter__message--success" role="status" tabindex="-1">
+        {{ 'newsletter.success' | t }}
+      </p>
+    {%- endif -%}
+  {%- endform -%}
+</div>
+
+{% stylesheet %}
+  .dromgooles-newsletter {
+    width: var(--newsletter-width-mobile);
+    text-align: var(--newsletter-alignment-mobile);
+    padding-top: var(--newsletter-padding-top);
+    padding-bottom: var(--newsletter-padding-bottom);
+  }
+
+  @media screen and (min-width: 750px) {
+    .dromgooles-newsletter {
+      width: var(--newsletter-width);
+      text-align: var(--newsletter-alignment);
+    }
+  }
+
+  .dromgooles-newsletter__heading {
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+  }
+
+  .dromgooles-newsletter__text {
+    font-size: var(--newsletter-text-size);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: var(--color-foreground);
+  }
+
+  .dromgooles-newsletter__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: var(--newsletter-max-width);
+  }
+
+  /* Form alignment based on text alignment */
+  .dromgooles-newsletter[style*="--newsletter-alignment-mobile: center"] .dromgooles-newsletter__form {
+    margin-inline: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .dromgooles-newsletter[style*="--newsletter-alignment: left"] .dromgooles-newsletter__form {
+      margin-inline-start: 0;
+      margin-inline-end: auto;
+    }
+
+    .dromgooles-newsletter[style*="--newsletter-alignment: center"] .dromgooles-newsletter__form {
+      margin-inline: auto;
+    }
+
+    .dromgooles-newsletter[style*="--newsletter-alignment: right"] .dromgooles-newsletter__form {
+      margin-inline-start: auto;
+      margin-inline-end: 0;
+    }
+  }
+
+  .dromgooles-newsletter__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--newsletter-input-radius);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--newsletter-input-size);
+  }
+
+  .dromgooles-newsletter__input::placeholder {
+    color: var(--color-foreground-muted);
+  }
+
+  .dromgooles-newsletter__input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  .dromgooles-newsletter__name-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .dromgooles-newsletter__button {
+    background-color: var(--newsletter-btn-bg);
+    color: var(--newsletter-btn-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--newsletter-btn-radius);
+    font-size: var(--newsletter-input-size);
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    width: var(--newsletter-btn-width);
+    align-self: flex-start;
+  }
+
+  /* Button alignment based on text alignment */
+  @media screen and (max-width: 749px) {
+    .dromgooles-newsletter[style*="--newsletter-alignment-mobile: center"] .dromgooles-newsletter__button {
+      align-self: center;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .dromgooles-newsletter[style*="--newsletter-alignment: center"] .dromgooles-newsletter__button {
+      align-self: center;
+    }
+
+    .dromgooles-newsletter[style*="--newsletter-alignment: right"] .dromgooles-newsletter__button {
+      align-self: flex-end;
+    }
+  }
+
+  /* Full width button overrides alignment */
+  .dromgooles-newsletter[style*="--newsletter-btn-width: 100%"] .dromgooles-newsletter__button {
+    align-self: stretch;
+  }
+
+  .dromgooles-newsletter__button:hover {
+    opacity: 0.9;
+  }
+
+  .dromgooles-newsletter__message {
+    font-size: var(--newsletter-text-size);
+    margin-top: 0.5rem;
+  }
+
+  .dromgooles-newsletter__message--error {
+    color: var(--color-error, #dc3545);
+  }
+
+  .dromgooles-newsletter__message--success {
+    color: var(--color-success, #198754);
+  }
+{% endstylesheet %}

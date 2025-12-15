@@ -1,0 +1,144 @@
+{% comment %}
+  Dromgoole's Brand Info Block
+  Contact information and store hours for footer
+
+  Settings:
+  - Logo image (optional, falls back to theme logo)
+  - Logo width
+  - Tagline text
+  - Phone, email, address
+  - Store hours with colored background box
+{% endcomment %}
+
+{% render 'dromgooles-brand-info', block: block %}
+
+{% schema %}
+{
+  "name": "Brand Info (Dromgoole's)",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Leave blank to use theme logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Brand text"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "A family owned business that's been putting ink on paper since 1961!"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "713.526.4651"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address",
+      "default": "cs.dromgooles@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "2515 Rice Blvd. Houston, TX 77005"
+    },
+    {
+      "type": "header",
+      "content": "Store hours"
+    },
+    {
+      "type": "textarea",
+      "id": "hours",
+      "label": "Store hours",
+      "default": "8:30-5:30 M-F | 9-5 Saturday\nClosed Sundays"
+    },
+    {
+      "type": "color",
+      "id": "hours_box_color",
+      "label": "Hours box background",
+      "default": "#c06014"
+    },
+    {
+      "type": "color",
+      "id": "hours_box_text_color",
+      "label": "Hours box text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:settings.width_mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "default": "left"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_mobile",
+      "label": "Alignment (mobile)",
+      "default": "center"
+    }
+  ]
+}
+{% endschema %}

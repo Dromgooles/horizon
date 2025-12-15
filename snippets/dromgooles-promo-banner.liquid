@@ -1,29 +1,36 @@
 {%- doc -%}
-  Dromgoole's promotional banner block with background image/gradient support.
+  Dromgoole's promotional banner block - a composable container with background styling.
+  Add any theme blocks inside (text, buttons, images, etc.) for maximum flexibility.
 
-  @param {object} [block] - The block object with settings
+  @param {string} [children] - Rendered child blocks via {% content_for 'blocks' %}
+  @param {object} [settings] - Block settings
+  @param {string} [shopify_attributes] - Block shopify attributes
 
   @example
-  {% render 'dromgooles-promo-banner' %}
+  {% capture children %}{% content_for 'blocks' %}{% endcapture %}
+  {% render 'dromgooles-promo-banner', children: children, settings: block.settings %}
 {%- enddoc -%}
-
-{% assign block_settings = block.settings %}
 
 <div
   class="dromgooles-promo-banner size-style"
   style="
-    {% render 'size-style', settings: block_settings %}
-    --min-height: {{ block_settings.min_height }}px;
-    --overlay-opacity: {{ block_settings.overlay_opacity | divided_by: 100.0 }};
-    --text-alignment: {{ block_settings.text_alignment }};
+    {% render 'size-style', settings: settings %}
+    --min-height: {{ settings.min_height | default: 400 }}px;
+    --overlay-opacity: {{ settings.overlay_opacity | default: 30 | divided_by: 100.0 }};
+    --content-direction: {{ settings.content_direction | default: 'column' }};
+    --horizontal-alignment: {{ settings.horizontal_alignment | default: 'center' }};
+    --vertical-alignment: {{ settings.vertical_alignment | default: 'center' }};
+    --gap: {{ settings.gap | default: 16 }}px;
+    --padding: {{ settings.padding | default: 32 }}px;
+    --border-radius: {{ settings.border_radius | default: 0 }}px;
   "
-  {{ block.shopify_attributes }}
+  {{ shopify_attributes }}
 >
   {% comment %} Background layer {% endcomment %}
-  {% if block_settings.background_image %}
+  {% if settings.background_image %}
     <div class="dromgooles-promo-banner__background">
       {{
-        block_settings.background_image
+        settings.background_image
         | image_url: width: 1920
         | image_tag:
           loading: 'lazy',
@@ -33,37 +40,18 @@
       }}
       <div class="dromgooles-promo-banner__overlay"></div>
     </div>
-  {% elsif block_settings.background_gradient != blank %}
+  {% elsif settings.background_gradient != blank %}
     <div
       class="dromgooles-promo-banner__background"
-      style="background: {{ block_settings.background_gradient }};"
+      style="background: {{ settings.background_gradient }};"
     ></div>
-  {% elsif block_settings.background_color != blank %}
-    <div class="dromgooles-promo-banner__background" style="background: {{ block_settings.background_color }};"></div>
+  {% elsif settings.background_color != blank %}
+    <div class="dromgooles-promo-banner__background" style="background: {{ settings.background_color }};"></div>
   {% endif %}
 
-  {% comment %} Content layer {% endcomment %}
+  {% comment %} Content layer - renders child blocks {% endcomment %}
   <div class="dromgooles-promo-banner__content">
-    {% if block_settings.title != blank %}
-      <h2 class="dromgooles-promo-banner__title">
-        {{ block_settings.title }}
-      </h2>
-    {% endif %}
-
-    {% if block_settings.text != blank %}
-      <div class="dromgooles-promo-banner__text rte">
-        {{ block_settings.text }}
-      </div>
-    {% endif %}
-
-    {% if block_settings.button_label != blank and block_settings.button_link != blank %}
-      <a
-        href="{{ block_settings.button_link }}"
-        class="dromgooles-promo-banner__button {{ block_settings.button_style }}"
-      >
-        {{ block_settings.button_label }}
-      </a>
-    {% endif %}
+    {{ children }}
   </div>
 </div>
 
@@ -71,11 +59,11 @@
   .dromgooles-promo-banner {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: var(--vertical-alignment, center);
+    justify-content: var(--horizontal-alignment, center);
     min-height: var(--min-height, 400px);
     overflow: hidden;
-    border-radius: var(--media-radius, 0);
+    border-radius: var(--border-radius, 0);
   }
 
   .dromgooles-promo-banner__background {
@@ -106,33 +94,21 @@
   .dromgooles-promo-banner__content {
     position: relative;
     z-index: 1;
-    padding: var(--padding-lg);
-    text-align: var(--text-alignment, center);
-    max-width: 800px;
+    display: flex;
+    flex-direction: var(--content-direction, column);
+    align-items: var(--horizontal-alignment, center);
+    justify-content: var(--vertical-alignment, center);
+    gap: var(--gap, 16px);
+    padding: var(--padding, 32px);
+    width: 100%;
+    max-width: 1000px;
     color: rgba(var(--color-foreground), 1);
   }
 
-  /* Ensure text is readable on images */
+  /* Ensure text is readable on background images */
   .dromgooles-promo-banner:has(.dromgooles-promo-banner__image) .dromgooles-promo-banner__content {
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .dromgooles-promo-banner__title {
-    margin-bottom: var(--padding-sm);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  .dromgooles-promo-banner__text {
-    margin-bottom: var(--padding-md);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-  }
-
-  .dromgooles-promo-banner__button {
-    display: inline-block;
-    margin-top: var(--padding-sm);
   }
 
   @media screen and (max-width: 749px) {
@@ -141,7 +117,8 @@
     }
 
     .dromgooles-promo-banner__content {
-      padding: var(--padding-md);
+      flex-direction: column;
+      padding: calc(var(--padding, 32px) * 0.75);
     }
   }
 {% endstylesheet %}

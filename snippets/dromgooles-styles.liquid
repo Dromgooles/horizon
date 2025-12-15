@@ -1,11 +1,23 @@
 {%- doc -%}
-  Loader snippet for Dromgoole's custom CSS overlay.
+  Loader snippet for Dromgoole's custom CSS and JS overlays.
   
-  This should be included in layout/theme.liquid or via a custom section
-  to load the custom brand styles after Horizon's base CSS.
+  This should be included in layout/theme.liquid or via stylesheets.liquid
+  to load the custom brand styles and scripts.
+
+  Includes:
+  - dromgooles.css: Main brand CSS customizations
+  - dromgooles-brands-index.css/js: Alphabetical brand navigation for drawer menu
 
   @example
   {% render 'dromgooles-styles' %}
 {%- enddoc -%}
 
+{% comment %} Main brand CSS {% endcomment %}
 <link rel="stylesheet" href="{{ 'dromgooles.css' | asset_url }}">
+
+{% comment %} Brands alphabetical index (iOS Contacts style navigation) {% endcomment %}
+<link rel="stylesheet" href="{{ 'dromgooles-brands-index.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{{ 'dromgooles-brands-index.css' | asset_url }}"></noscript>
+
+{% comment %} Deferred JS for brands index {% endcomment %}
+<script src="{{ 'dromgooles-brands-index.js' | asset_url }}" defer="defer"></script>

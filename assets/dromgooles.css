@@ -343,6 +343,29 @@
    Horizon's default header structure.
    ============================================ */
 
+/* -----------------------------------------
+   Drawer Menu on Desktop (Dawn-style)
+   
+   Hide the inline desktop menu and show the 
+   hamburger drawer menu on all screen sizes.
+   ----------------------------------------- */
+
+/* Hide the desktop inline menu */
+.header-menu.mobile\:hidden,
+header-menu.mobile\:hidden {
+  display: none !important;
+}
+
+/* Show the drawer toggle on desktop (normally hidden with desktop:hidden) */
+.header__drawer.desktop\:hidden {
+  display: block !important;
+}
+
+/* Ensure the drawer hamburger icon is visible on all screen sizes */
+.header-drawer.header__drawer--mobile {
+  display: block !important;
+}
+
 /* Header icon hover enhancement */
 .header__icon:hover .icon {
   transform: scale(1.07);

@@ -1,2 +1,5 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- comment -%} Dromgoole's custom CSS overlay - loaded after base CSS {%- endcomment -%}
+{% render 'dromgooles-styles' %}
