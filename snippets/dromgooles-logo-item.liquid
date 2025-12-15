@@ -1,6 +1,6 @@
 {%- doc -%}
   Renders a single logo item for use in logo grids.
-  
+
   @param {object} block - The block object with settings (image, alt_text, link, max_height)
 {%- enddoc -%}
 
@@ -18,7 +18,7 @@
         style: '--max-height: ' | append: block_settings.max_height | append: 'px'
     }}
   {%- endcapture -%}
-  
+
   {%- if block_settings.link -%}
     <a href="{{ block_settings.link }}" class="dromgooles-logo-item" {{ block.shopify_attributes }}>
       {{ logo_image }}
