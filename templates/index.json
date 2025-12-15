@@ -211,7 +211,7 @@
         "full_frame_on_mobile": false,
         "slideshow_gap": 0,
         "corner_radius": 0,
-        "slide_height": "medium",
+        "slide_height": "small",
         "content_position": "on-media",
         "color_scheme": "scheme-1",
         "icons_style": "chevron_large",
