@@ -1,0 +1,25 @@
+{% comment %}
+  Dromgoole's Slide Link Block
+  
+  Makes an entire slide clickable by overlaying an invisible anchor element.
+  Intended for use within slideshow slide blocks.
+  
+  Usage:
+  Add this block inside a _slide block to make the entire slide clickable.
+{% endcomment %}
+
+{% render 'dromgooles-slide-link', link: block.settings.link %}
+
+{% schema %}
+{
+  "name": "Slide link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ]
+}
+{% endschema %}

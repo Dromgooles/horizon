@@ -1,0 +1,46 @@
+{% comment %}
+  Dromgoole's Logo Item Block
+  
+  Displays a single logo/image with an optional link.
+  Intended for use within _blocks sections to create logo grids.
+  
+  Usage:
+  Add multiple of these blocks inside a _blocks section to create a logo grid.
+{% endcomment %}
+
+{% render 'dromgooles-logo-item', block: block %}
+
+{% schema %}
+{
+  "name": "Logo item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Alt text",
+      "info": "Describe the logo for accessibility"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "range",
+      "id": "max_height",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Max height",
+      "default": 80
+    }
+  ]
+}
+{% endschema %}

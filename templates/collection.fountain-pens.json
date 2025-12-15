@@ -12,7 +12,17 @@
     "main": {
       "type": "main-collection",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true
+      }
     },
     "hero": {
       "type": "hero",
@@ -556,8 +566,176 @@
         "text"
       ],
       "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "pen_accessories": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "pen_cases": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "pen-cases",
+            "custom_image": "shopify://shop_images/Pen_Cases.png",
+            "hide_title": true,
+            "custom_title": "Pen Cases",
+            "image_style": "contain"
+          }
+        },
+        "pen_clips": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "pen-clips",
+            "custom_image": "shopify://shop_images/Clips_4fa39abe-5323-44ac-a00e-08679e951c00.png",
+            "hide_title": true,
+            "custom_title": "Pen Clips",
+            "image_style": "contain"
+          }
+        },
+        "converters": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "converters-1",
+            "custom_image": "shopify://shop_images/Converters_c0ad2d7f-5692-48cb-aca9-2658c3f61119.png",
+            "hide_title": true,
+            "custom_title": "Converters",
+            "image_style": "contain"
+          }
+        },
+        "nibs": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "nibs",
+            "custom_image": "shopify://shop_images/Nibs_637ae7dc-467f-4cf4-9995-554b5f18a0f0.png",
+            "hide_title": true,
+            "custom_title": "Nibs",
+            "image_style": "contain"
+          }
+        }
+      },
+      "block_order": [
+        "pen_cases",
+        "pen_clips",
+        "converters",
+        "nibs"
+      ],
+      "settings": {
+        "title": "Pen Accessories",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "other_instruments": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "ballpoints": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "ballpoints",
+            "custom_title": "Ballpoint Pens",
+            "hide_title": false,
+            "image_style": "contain",
+            "text_color": "#121212"
+          }
+        },
+        "rollerballs": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "rollerballs",
+            "custom_title": "Rollerball Pens",
+            "hide_title": false,
+            "image_style": "contain",
+            "text_color": "#121212"
+          }
+        },
+        "pencils": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "pencils",
+            "custom_title": "Pencils",
+            "hide_title": false,
+            "image_style": "contain",
+            "text_color": "#121212"
+          }
+        },
+        "calligraphy": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "calligraphy",
+            "custom_image": "shopify://shop_images/toms-studio-bloom-straight-calligraphy-pen-bluebell-hero.webp",
+            "custom_title": "Calligraphy Pens",
+            "hide_title": false,
+            "image_style": "contain",
+            "text_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "ballpoints",
+        "rollerballs",
+        "pencils",
+        "calligraphy"
+      ],
+      "settings": {
+        "title": "Other Writing Instruments",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "help_cta": {
+      "type": "section",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Need Help Finding the Perfect Pen?</h2>",
+            "type_preset": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our knowledgeable staff is passionate about finding the right match for every writer and planner. Visit us at Dromgoole's in Houston, TX, and we'll ensure your fountain pen is as memorable and unique as the person receiving it.</p>",
+            "type_preset": "paragraph"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Contact Us",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
         "section_width": "full-width",
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -571,6 +749,9 @@
     "gold_nib_promo",
     "shop_by_color",
     "shop_by_fill_system",
-    "fill_system_info"
+    "fill_system_info",
+    "pen_accessories",
+    "other_instruments",
+    "help_cta"
   ]
 }

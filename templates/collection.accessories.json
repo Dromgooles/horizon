@@ -1,58 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-collection",
-      "disabled": true,
-      "settings": {}
-    },
-    "hero": {
-      "type": "hero",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>Pen Accessories</h1>",
-            "type_preset": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Ink, cases, and accessories for your writing instruments.</p>",
-            "type_preset": "paragraph"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "label": "Shop Accessories",
-            "link": "shopify://collections/accessories"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "media_type_1": "image",
-        "section_width": "full-width",
-        "color_scheme": "scheme-1"
-      }
-    }
+    "main": {"type": "main-collection", "disabled": true, "settings": {"products_per_page": 16, "columns_desktop": 4, "columns_mobile": "2", "image_ratio": "adapt", "show_secondary_image": true, "quick_add": "none", "enable_filtering": true, "filter_type": "vertical", "enable_sorting": true}},
+    "hero": {"type": "hero", "blocks": {"heading": {"type": "text", "settings": {"text": "<h1>Accessories</h1>", "type_preset": "h1"}}, "text": {"type": "text", "settings": {"text": "<p>Desk accessories, pocket knives, notebook covers, pen loops, and more.</p>", "type_preset": "paragraph"}}, "button": {"type": "button", "settings": {"label": "Shop All Accessories", "link": "shopify://collections/accessories"}}}, "block_order": ["heading", "text", "button"], "settings": {"media_type_1": "image", "image_1": "shopify://shop_images/EsterbrookTravelJournalWorkshopPresentation-stock-3_1500x_45b54480-cfb9-45f7-b273-2716e3d01ce4.webp", "section_width": "full-width", "color_scheme": "scheme-1"}},
+    "shop_by_type": {"type": "dromgooles-collection-grid", "blocks": {"knives": {"type": "dromgooles-collection-card", "settings": {"collection": "knives", "custom_title": "Pocket Knives", "hide_title": false, "image_style": "cover"}}, "pen_cases": {"type": "dromgooles-collection-card", "settings": {"collection": "pen-cases", "custom_title": "Pen Cases", "hide_title": false, "image_style": "cover"}}, "desk": {"type": "dromgooles-collection-card", "settings": {"collection": "desk-accessories", "custom_title": "Desk Accessories", "hide_title": false, "image_style": "cover"}}, "notebook_covers": {"type": "dromgooles-collection-card", "settings": {"collection": "notebook-covers", "custom_title": "Notebook Covers", "hide_title": false, "image_style": "cover"}}}, "block_order": ["knives", "pen_cases", "desk", "notebook_covers"], "settings": {"title": "Shop by Type", "title_size": "h2", "header_alignment": "center", "columns_desktop": 4, "columns_tablet": 2, "columns_mobile": 2, "gap": 32, "section_width": "page-width", "color_scheme": "scheme-1", "padding_top": 60, "padding_bottom": 60}}
   },
-  "order": [
-    "main",
-    "hero"
-  ]
+  "order": ["main", "hero", "shop_by_type"]
 }

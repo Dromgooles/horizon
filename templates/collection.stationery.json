@@ -1,58 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-collection",
-      "disabled": true,
-      "settings": {}
-    },
-    "hero": {
-      "type": "hero",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>Fine Stationery</h1>",
-            "type_preset": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Elegant stationery, sealing wax, and desk accessories for the discerning writer.</p>",
-            "type_preset": "paragraph"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "label": "Shop Stationery",
-            "link": "shopify://collections/stationery"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "media_type_1": "image",
-        "section_width": "full-width",
-        "color_scheme": "scheme-1"
-      }
-    }
+    "main": {"type": "main-collection", "disabled": true, "settings": {"products_per_page": 16, "columns_desktop": 4, "columns_mobile": "2", "image_ratio": "adapt", "show_secondary_image": true, "quick_add": "none", "enable_filtering": true, "filter_type": "vertical", "enable_sorting": true}},
+    "hero": {"type": "hero", "blocks": {"heading": {"type": "text", "settings": {"text": "<h1>Stationery</h1>", "type_preset": "h1"}}, "text": {"type": "text", "settings": {"text": "<p>Fine stationery, greeting cards, and correspondence essentials.</p>", "type_preset": "paragraph"}}, "button": {"type": "button", "settings": {"label": "Shop All Stationery", "link": "shopify://collections/stationery"}}}, "block_order": ["heading", "text", "button"], "settings": {"media_type_1": "image", "image_1": "shopify://shop_images/2ef83c4116ad4.jpg", "section_width": "full-width", "color_scheme": "scheme-1"}},
+    "shop_by_category": {"type": "dromgooles-collection-grid", "blocks": {"note_cards": {"type": "dromgooles-collection-card", "settings": {"collection": "crane-thank-you-notes-and-cards", "custom_image": "shopify://shop_images/cf19041-crane-pearl-white-neon-blue-bordered-note.jpg", "custom_title": "Note Cards", "hide_title": false, "image_style": "contain"}}, "writing_paper": {"type": "dromgooles-collection-card", "settings": {"collection": "writing-paper", "custom_title": "Writing Paper", "hide_title": false, "image_style": "contain"}}, "envelopes": {"type": "dromgooles-collection-card", "settings": {"collection": "envelopes", "custom_title": "Envelopes", "hide_title": false, "image_style": "contain"}}, "greeting_cards": {"type": "dromgooles-collection-card", "settings": {"collection": "greeting-cards", "custom_title": "Greeting Cards", "hide_title": false, "image_style": "contain"}}}, "block_order": ["note_cards", "writing_paper", "envelopes", "greeting_cards"], "settings": {"title": "Shop by Category", "title_size": "h2", "header_alignment": "center", "columns_desktop": 4, "columns_tablet": 2, "columns_mobile": 2, "gap": 32, "section_width": "page-width", "color_scheme": "scheme-1", "padding_top": 60, "padding_bottom": 60}}
   },
-  "order": [
-    "main",
-    "hero"
-  ]
+  "order": ["main", "hero", "shop_by_category"]
 }

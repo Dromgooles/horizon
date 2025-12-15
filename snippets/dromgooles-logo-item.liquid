@@ -1,0 +1,47 @@
+{%- doc -%}
+  Renders a single logo item for use in logo grids.
+  
+  @param {object} block - The block object with settings (image, alt_text, link, max_height)
+{%- enddoc -%}
+
+{%- assign block_settings = block.settings -%}
+
+{%- if block_settings.image -%}
+  {%- capture logo_image -%}
+    {{
+      block_settings.image
+      | image_url: height: 200
+      | image_tag:
+        alt: block_settings.alt_text,
+        loading: 'lazy',
+        class: 'dromgooles-logo-item__image',
+        style: '--max-height: ' | append: block_settings.max_height | append: 'px'
+    }}
+  {%- endcapture -%}
+  
+  {%- if block_settings.link -%}
+    <a href="{{ block_settings.link }}" class="dromgooles-logo-item" {{ block.shopify_attributes }}>
+      {{ logo_image }}
+    </a>
+  {%- else -%}
+    <div class="dromgooles-logo-item" {{ block.shopify_attributes }}>
+      {{ logo_image }}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% stylesheet %}
+  .dromgooles-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: var(--padding-xs);
+  }
+
+  .dromgooles-logo-item__image {
+    max-height: var(--max-height, 80px);
+    width: auto;
+    object-fit: contain;
+  }
+{% endstylesheet %}

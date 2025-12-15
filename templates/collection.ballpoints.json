@@ -1,18 +1,19 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-collection",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true
+      }
     },
     "hero": {
       "type": "hero",
@@ -27,7 +28,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Premium ballpoint pens from the world's finest brands.</p>",
+            "text": "<p>Discover our curated collection of premium ballpoint pens from top brands worldwide.</p>",
             "type_preset": "paragraph"
           }
         },
@@ -39,20 +40,181 @@
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+      "block_order": ["heading", "text", "button"],
       "settings": {
         "media_type_1": "image",
+        "image_1": "shopify://shop_images/554B0DEA-3CF5-4936-949E-20C736B7DF5E.jpg",
         "section_width": "full-width",
         "color_scheme": "scheme-1"
       }
+    },
+    "special_selections": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "new_arrivals": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "new-arrivals-rollerballs-copy",
+            "custom_image": "shopify://shop_images/New_Arrivals_69f7ecfd-e632-4847-8730-58bec7490fb2.png",
+            "hide_title": true,
+            "custom_title": "New Arrivals",
+            "image_style": "contain"
+          }
+        },
+        "limited_edition": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "limited-special-edition-ballpoints",
+            "custom_image": "shopify://shop_images/Limited_Special.png",
+            "hide_title": true,
+            "custom_title": "Limited & Special Edition",
+            "image_style": "contain"
+          }
+        },
+        "pre_owned": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "pre-owned-ballpoints",
+            "custom_image": "shopify://shop_images/Pre_Owned.png",
+            "hide_title": true,
+            "custom_title": "Pre-Owned",
+            "image_style": "contain"
+          }
+        }
+      },
+      "block_order": ["new_arrivals", "limited_edition", "pre_owned"],
+      "settings": {
+        "title": "Shop Special Selections",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 3,
+        "columns_tablet": 3,
+        "columns_mobile": 1,
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "popular_brands": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "montblanc": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "montblanc-1",
+            "custom_image": "shopify://shop_images/Mont_Blanc_Logo.png",
+            "hide_title": true,
+            "image_style": "contain"
+          }
+        },
+        "cross": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "cross",
+            "custom_image": "shopify://shop_images/Cross_Logo.png",
+            "hide_title": true,
+            "image_style": "contain"
+          }
+        },
+        "parker": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "parker-1",
+            "custom_image": "shopify://shop_images/Parker_Logo.png",
+            "hide_title": true,
+            "image_style": "contain"
+          }
+        },
+        "waterman": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "waterman",
+            "custom_image": "shopify://shop_images/Waterman_Logo.png",
+            "hide_title": true,
+            "image_style": "contain"
+          }
+        }
+      },
+      "block_order": ["montblanc", "cross", "parker", "waterman"],
+      "settings": {
+        "title": "Popular Brands",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "shop_by_color": {
+      "type": "dromgooles-collection-grid",
+      "blocks": {
+        "black": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "black-ballpoints",
+            "custom_title": "Black",
+            "hide_title": false,
+            "background_color": "#393939",
+            "text_color": "#ffffff",
+            "border_radius": 50
+          }
+        },
+        "blue": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "blue-ballpoints",
+            "custom_title": "Blue",
+            "hide_title": false,
+            "background_color": "#1c67fa",
+            "text_color": "#ffffff",
+            "border_radius": 50
+          }
+        },
+        "red": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "red-ballpoints",
+            "custom_title": "Red",
+            "hide_title": false,
+            "background_color": "#be1717",
+            "text_color": "#ffffff",
+            "border_radius": 50
+          }
+        },
+        "silver": {
+          "type": "dromgooles-collection-card",
+          "settings": {
+            "collection": "silver-grey-ballpoints",
+            "custom_title": "Silver",
+            "hide_title": false,
+            "background_color": "#d1d1d1",
+            "text_color": "#000000",
+            "border_radius": 50
+          }
+        }
+      },
+      "block_order": ["black", "blue", "red", "silver"],
+      "settings": {
+        "title": "Shop By Color",
+        "title_size": "h2",
+        "header_alignment": "center",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
-  "order": [
-    "main",
-    "hero"
-  ]
+  "order": ["main", "hero", "special_selections", "popular_brands", "shop_by_color"]
 }
