@@ -80,6 +80,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "logo_position": "left",
         "menu_position": "left",
@@ -110,10 +111,66 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "dromgooles_header_fFfHUY": {
+      "type": "dromgooles-header",
+      "blocks": {
+        "drawer_Um4FDr": {
+          "type": "drawer",
+          "settings": {
+            "position": "left",
+            "color_scheme": ""
+          }
+        },
+        "search_pNMjNx": {
+          "type": "search",
+          "settings": {
+            "position": "left"
+          }
+        },
+        "logo_N6UxLz": {
+          "type": "logo",
+          "settings": {
+            "position": "center"
+          }
+        },
+        "account_pAJ4Fn": {
+          "type": "account",
+          "settings": {
+            "position": "right"
+          }
+        },
+        "cart_kWaXKT": {
+          "type": "cart",
+          "settings": {
+            "position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "drawer_Um4FDr",
+        "search_pNMjNx",
+        "logo_N6UxLz",
+        "account_pAJ4Fn",
+        "cart_kWaXKT"
+      ],
+      "name": "DRO Header",
+      "settings": {
+        "menu": "main-menu",
+        "enable_sticky_header": "none",
+        "logo_width": 150,
+        "section_width": "full-width",
+        "border_width": 0,
+        "color_scheme": "",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
     }
   },
   "order": [
     "header_announcements_9jGBFp",
-    "header_section"
+    "header_section",
+    "dromgooles_header_fFfHUY"
   ]
 }
