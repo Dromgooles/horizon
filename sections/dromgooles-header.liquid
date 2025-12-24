@@ -1,0 +1,815 @@
+{% comment %}
+  CUSTOMIZED: Dromgoole's Custom Header with Block-Based Layout
+  Based on: Dawn v15.4.1
+
+  Features:
+  - Block-based architecture allowing reordering of header elements (drawer, search, logo, account, cart)
+  - Each element is a draggable block in the theme editor with position setting (left/center/right)
+  - Drawer-only menu with nested navigation support
+  - Follows Horizon's component framework patterns
+{% endcomment %}
+
+<script
+  src="{{ 'header-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<script
+  src="{{ 'header.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<script
+  type="module"
+  src="{{ 'cart-icon.js' | asset_url }}"
+  fetchpriority="low"
+></script>
+
+{% if settings.cart_type == 'drawer' %}
+  <script
+    src="{{ 'cart-drawer.js' | asset_url }}"
+    type="module"
+    fetchpriority="low"
+  ></script>
+{% endif %}
+
+<script
+  src="{{ 'dialog.js' | asset_url }}"
+  type="module"
+></script>
+
+<script
+  src="{{ 'anchored-popover.js' | asset_url }}"
+  type="module"
+></script>
+
+{% liquid
+  assign sticky = false
+  if section.settings.enable_sticky_header == 'always' or section.settings.enable_sticky_header == 'scroll-up'
+    assign sticky = true
+  endif
+%}
+
+{% style %}
+  .dro-header {
+    padding-block-start: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-block-end: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+  }
+
+  .section-dro-header {
+    margin-block-end: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-dro-header {
+      margin-block-end: {{ section.settings.margin_bottom }}px;
+    }
+
+    .dro-header {
+      padding-block-start: {{ section.settings.padding_top }}px;
+      padding-block-end: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Block-based header layout */
+  .dro-header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+  }
+
+  .dro-header__group {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xl);
+  }
+
+  .dro-header__group--left {
+    justify-content: flex-start;
+    flex: 0 1 auto;
+  }
+
+  .dro-header__group--center {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .dro-header__group--right {
+    justify-content: flex-end;
+    flex: 0 1 auto;
+  }
+
+  /* Drawer menu button */
+  .dro-header__drawer {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Search icon */
+  .dro-header__search {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Logo */
+  .dro-header__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .dro-header__logo-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .dro-header__logo-image {
+    display: block;
+    height: {{ settings.logo_height }}px;
+    width: auto;
+  }
+
+  .dro-header__logo-text {
+    font-size: var(--font-heading-scale);
+    font-weight: bold;
+    margin: 0;
+  }
+
+  /* Account and cart icons */
+  .dro-header__icon {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  {% if section.settings.show_line_separator %}
+  .dro-header--bordered {
+    border-block-end: 1px solid rgba(var(--color-foreground), 0.08);
+  }
+  {% endif %}
+{% endstyle %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+<header-component
+  id="dro-header-component"
+  class="header color-{{ section.settings.color_scheme }}"
+  data-theme-color="rgb({{ section.settings.color_scheme.settings.background.rgb }})"
+  {% if sticky %}
+    sticky="{{ section.settings.enable_sticky_header }}"
+  {% endif %}
+  data-skip-node-update
+  data-scroll-direction="none"
+>
+  {%- if request.page_type == 'index' -%}
+    <h1 class="visually-hidden">{{ shop.name }}</h1>
+  {%- endif -%}
+
+  <div
+    class="header__row header__row--top section section--full-width-margin section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+    ref="headerRowTop"
+    style="--border-bottom-width: {{ section.settings.border_width }}px;"
+  >
+    <div class="header__columns spacing-style">
+      {%- comment -%} Hidden ref for header.js component compatibility {%- endcomment -%}
+      <span ref="headerMenu" style="display: none;"></span>
+      <div class="dro-header__container">
+        {%- comment -%} Left group {%- endcomment -%}
+        <div class="dro-header__group dro-header__group--left">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.position == 'left' -%}
+              {%- case block.type -%}
+                {%- when 'drawer' -%}
+                  <div class="dro-header__drawer" {{ block.shopify_attributes }} ref="headerDrawerContainer">
+                    {% render 'header-drawer', linklist: section.settings.menu, block: block, section: section %}
+                  </div>
+
+                {%- when 'search' -%}
+                  <div class="dro-header__search" {{ block.shopify_attributes }}>
+                    {% render 'search', style: 'modal' %}
+                  </div>
+
+                {%- when 'logo' -%}
+                  <div class="dro-header__logo" {{ block.shopify_attributes }}>
+                    {%- if request.page_type == 'index' -%}
+                      <h1 class="dro-header__heading">
+                    {%- endif -%}
+                    <a href="{{ routes.root_url }}" class="dro-header__logo-link">
+                      {% render 'image',
+                        image: settings.logo,
+                        class: 'dro-header__logo-image',
+                        height: settings.logo_height,
+                        text_fallback: shop.name
+                      %}
+                    </a>
+                    {%- if request.page_type == 'index' -%}
+                      </h1>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'account' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {%- if shop.customer_accounts_enabled -%}
+                      <anchored-popover-component
+                        data-close-on-resize="true"
+                        class="account-popover"
+                      >
+                        {% render 'account-button' with 'dro-account-popover' as popover_id %}
+                        <div
+                          class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
+                          id="dro-account-popover"
+                          popover="auto"
+                          ref="popover"
+                        >
+                          {% render 'account-actions' %}
+                        </div>
+                      </anchored-popover-component>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'cart' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+                      <cart-drawer-component
+                        class="cart-drawer"
+                        {% if settings.auto_open_cart_drawer %}
+                          auto-open
+                        {% endif %}
+                      >
+                        <button
+                          class="button header-actions__action button-unstyled"
+                          on:click="/open"
+                          aria-haspopup="dialog"
+                          aria-label="{{ 'accessibility.cart' | t }}"
+                          aria-describedby="cart-bubble-text"
+                          data-testid="cart-drawer-trigger"
+                        >
+                          <cart-icon
+                            class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                            data-testid="cart-icon"
+                          >
+                            <span class="svg-wrapper" aria-hidden="true">
+                              {{ 'icon-cart.svg' | inline_asset_content }}
+                            </span>
+                            {% render 'cart-bubble', limit: 100, live_region: true %}
+                          </cart-icon>
+                        </button>
+                      </cart-drawer-component>
+                    {% else %}
+                      <cart-icon
+                        class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                        data-testid="cart-icon"
+                      >
+                        <a
+                          href="{{ routes.cart_url }}"
+                          class="button header-actions__action button-unstyled"
+                          aria-label="{{ 'content.view_cart' | t }}"
+                        >
+                          <span class="svg-wrapper" aria-hidden="true">
+                            {{ 'icon-cart.svg' | inline_asset_content }}
+                          </span>
+                          {% render 'cart-bubble', limit: 100, live_region: true %}
+                        </a>
+                      </cart-icon>
+                    {% endif %}
+                  </div>
+              {%- endcase -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Center group {%- endcomment -%}
+        <div class="dro-header__group dro-header__group--center">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.position == 'center' -%}
+              {%- case block.type -%}
+                {%- when 'drawer' -%}
+                  <div class="dro-header__drawer" {{ block.shopify_attributes }}>
+                    {% render 'header-drawer', linklist: section.settings.menu, block: block, section: section %}
+                  </div>
+
+                {%- when 'search' -%}
+                  <div class="dro-header__search" {{ block.shopify_attributes }}>
+                    {% render 'search', style: 'modal' %}
+                  </div>
+
+                {%- when 'logo' -%}
+                  <div class="dro-header__logo" {{ block.shopify_attributes }}>
+                    {%- if request.page_type == 'index' -%}
+                      <h1 class="dro-header__heading">
+                    {%- endif -%}
+                    <a href="{{ routes.root_url }}" class="dro-header__logo-link">
+                      {% render 'image',
+                        image: settings.logo,
+                        class: 'dro-header__logo-image',
+                        height: settings.logo_height,
+                        text_fallback: shop.name
+                      %}
+                    </a>
+                    {%- if request.page_type == 'index' -%}
+                      </h1>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'account' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {%- if shop.customer_accounts_enabled -%}
+                      <anchored-popover-component
+                        data-close-on-resize="true"
+                        class="account-popover"
+                      >
+                        {% render 'account-button' with 'dro-account-popover-center' as popover_id %}
+                        <div
+                          class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
+                          id="dro-account-popover-center"
+                          popover="auto"
+                          ref="popover"
+                        >
+                          {% render 'account-actions' %}
+                        </div>
+                      </anchored-popover-component>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'cart' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+                      <cart-drawer-component
+                        class="cart-drawer"
+                        {% if settings.auto_open_cart_drawer %}
+                          auto-open
+                        {% endif %}
+                      >
+                        <button
+                          class="button header-actions__action button-unstyled"
+                          on:click="/open"
+                          aria-haspopup="dialog"
+                          aria-label="{{ 'accessibility.cart' | t }}"
+                          aria-describedby="cart-bubble-text"
+                          data-testid="cart-drawer-trigger"
+                        >
+                          <cart-icon
+                            class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                            data-testid="cart-icon"
+                          >
+                            <span class="svg-wrapper" aria-hidden="true">
+                              {{ 'icon-cart.svg' | inline_asset_content }}
+                            </span>
+                            {% render 'cart-bubble', limit: 100, live_region: true %}
+                          </cart-icon>
+                        </button>
+                      </cart-drawer-component>
+                    {% else %}
+                      <cart-icon
+                        class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                        data-testid="cart-icon"
+                      >
+                        <a
+                          href="{{ routes.cart_url }}"
+                          class="button header-actions__action button-unstyled"
+                          aria-label="{{ 'content.view_cart' | t }}"
+                        >
+                          <span class="svg-wrapper" aria-hidden="true">
+                            {{ 'icon-cart.svg' | inline_asset_content }}
+                          </span>
+                          {% render 'cart-bubble', limit: 100, live_region: true %}
+                        </a>
+                      </cart-icon>
+                    {% endif %}
+                  </div>
+              {%- endcase -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Right group {%- endcomment -%}
+        <div class="dro-header__group dro-header__group--right">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.position == 'right' -%}
+              {%- case block.type -%}
+                {%- when 'drawer' -%}
+                  <div class="dro-header__drawer" {{ block.shopify_attributes }}>
+                    {% render 'header-drawer', linklist: section.settings.menu, block: block, section: section %}
+                  </div>
+
+                {%- when 'search' -%}
+                  <div class="dro-header__search" {{ block.shopify_attributes }}>
+                    {% render 'search', style: 'modal' %}
+                  </div>
+
+                {%- when 'logo' -%}
+                  <div class="dro-header__logo" {{ block.shopify_attributes }}>
+                    {%- if request.page_type == 'index' -%}
+                      <h1 class="dro-header__heading">
+                    {%- endif -%}
+                    <a href="{{ routes.root_url }}" class="dro-header__logo-link">
+                      {% render 'image',
+                        image: settings.logo,
+                        class: 'dro-header__logo-image',
+                        height: settings.logo_height,
+                        text_fallback: shop.name
+                      %}
+                    </a>
+                    {%- if request.page_type == 'index' -%}
+                      </h1>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'account' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {%- if shop.customer_accounts_enabled -%}
+                      <anchored-popover-component
+                        data-close-on-resize="true"
+                        class="account-popover"
+                      >
+                        {% render 'account-button' with 'dro-account-popover-right' as popover_id %}
+                        <div
+                          class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
+                          id="dro-account-popover-right"
+                          popover="auto"
+                          ref="popover"
+                        >
+                          {% render 'account-actions' %}
+                        </div>
+                      </anchored-popover-component>
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'cart' -%}
+                  <div class="dro-header__icon" {{ block.shopify_attributes }}>
+                    {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+                      <cart-drawer-component
+                        class="cart-drawer"
+                        {% if settings.auto_open_cart_drawer %}
+                          auto-open
+                        {% endif %}
+                      >
+                        <button
+                          class="button header-actions__action button-unstyled"
+                          on:click="/open"
+                          aria-haspopup="dialog"
+                          aria-label="{{ 'accessibility.cart' | t }}"
+                          aria-describedby="cart-bubble-text"
+                          data-testid="cart-drawer-trigger"
+                        >
+                          <cart-icon
+                            class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                            data-testid="cart-icon"
+                          >
+                            <span class="svg-wrapper" aria-hidden="true">
+                              {{ 'icon-cart.svg' | inline_asset_content }}
+                            </span>
+                            {% render 'cart-bubble', limit: 100, live_region: true %}
+                          </cart-icon>
+                        </button>
+                      </cart-drawer-component>
+                    {% else %}
+                      <cart-icon
+                        class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
+                        data-testid="cart-icon"
+                      >
+                        <a
+                          href="{{ routes.cart_url }}"
+                          class="button header-actions__action button-unstyled"
+                          aria-label="{{ 'content.view_cart' | t }}"
+                        >
+                          <span class="svg-wrapper" aria-hidden="true">
+                            {{ 'icon-cart.svg' | inline_asset_content }}
+                          </span>
+                          {% render 'cart-bubble', limit: 100, live_region: true %}
+                        </a>
+                      </cart-icon>
+                    {% endif %}
+                  </div>
+              {%- endcase -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</header-component>
+
+{% schema %}
+{
+  "name": "DRO Header",
+  "class": "section-dro-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Menu Settings"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Sticky Behavior"
+    },
+    {
+      "type": "select",
+      "id": "enable_sticky_header",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "scroll-up",
+          "label": "On scroll up"
+        },
+        {
+          "value": "always",
+          "label": "Always"
+        }
+      ],
+      "default": "none",
+      "label": "Sticky header"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 150,
+      "unit": "px",
+      "label": "Logo width"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "drawer",
+      "name": "Menu Drawer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Position"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Drawer color scheme",
+          "default": "scheme-1"
+        }
+      ]
+    },
+    {
+      "type": "search",
+      "name": "Search",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right",
+          "label": "Position"
+        }
+      ]
+    },
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Position"
+        }
+      ]
+    },
+    {
+      "type": "account",
+      "name": "Account",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right",
+          "label": "Position"
+        }
+      ]
+    },
+    {
+      "type": "cart",
+      "name": "Cart",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right",
+          "label": "Position"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "DRO Header",
+      "blocks": [
+        {
+          "type": "drawer",
+          "settings": {
+            "position": "left"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "position": "center"
+          }
+        },
+        {
+          "type": "search",
+          "settings": {
+            "position": "right"
+          }
+        },
+        {
+          "type": "account",
+          "settings": {
+            "position": "right"
+          }
+        },
+        {
+          "type": "cart",
+          "settings": {
+            "position": "right"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
