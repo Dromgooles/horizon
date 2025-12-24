@@ -128,8 +128,15 @@
 
   .dro-header__logo-image {
     display: block;
-    height: {{ settings.logo_height }}px;
+    height: {{ settings.logo_height_mobile }}px;
     width: auto;
+    object-fit: contain;
+  }
+
+  @media screen and (min-width: 750px) {
+    .dro-header__logo-image {
+      height: {{ settings.logo_height }}px;
+    }
   }
 
   .dro-header__logo-text {

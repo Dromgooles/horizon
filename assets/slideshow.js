@@ -161,7 +161,11 @@ export class Slideshow extends Component {
 
     if (!this.infinite) requestedIndex = clamp(requestedIndex, 0, slides.length - 1);
 
-    event?.preventDefault();
+    // Don't prevent default if clicking on a link - let the navigation happen
+    const isLinkClick = event?.target instanceof Element && event.target.closest('a[href]');
+    if (!isLinkClick) {
+      event?.preventDefault();
+    }
 
     const { animate = true } = options;
     const lastIndex = slides.length - 1;

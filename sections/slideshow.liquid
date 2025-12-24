@@ -80,7 +80,8 @@
     autoplay_speed: section.settings.autoplay_speed,
     slides: slides,
     slide_count: section.blocks.size,
-    slide_size: section.settings.slide_height
+    slide_size: section.settings.slide_height,
+    aspect_ratio: section.settings.aspect_ratio
   %}
 </div>
 
@@ -266,10 +267,23 @@
         {
           "value": "large",
           "label": "t:options.large"
+        },
+        {
+          "value": "aspect_ratio",
+          "label": "Aspect ratio"
         }
       ],
       "default": "medium",
       "label": "t:settings.media_height"
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "placeholder": "16:9",
+      "info": "Enter as width:height (e.g., 16:9, 4:3, 16:5)",
+      "default": "16:9",
+      "visible_if": "{{ section.settings.slide_height == 'aspect_ratio' }}"
     },
     {
       "type": "select",

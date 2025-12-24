@@ -15,6 +15,7 @@
   @param {string} [slideshow_gutters] - the gutter positions to render. Set width with CSS variables --gutter-slide-width
   @param {number} [slide_count] - the total number of slides
   @param {string} [slide_size] - the height of the slides
+  @param {string} [aspect_ratio] - the aspect ratio for slides when slide_size is 'aspect_ratio' (e.g., '16/9', '4/3')
   @param {string} [slide_position] - the vertical position of the slides, defaults to 'top'
   @param {boolean} [show_arrows] - whether the slideshow will render a slideshow-arrows component
   @param {string} [slideshow_arrows] - a custom slideshow-arrows component to render instead of the default
@@ -37,6 +38,7 @@
 
   assign slide_min_height = '--slide-min-height: auto;'
   assign slide_min_height_desktop = '--slide-min-height-desktop: auto;'
+  assign slide_aspect_ratio = ''
 
   case slide_size
     when 'small'
@@ -48,6 +50,12 @@
     when 'large'
       assign slide_min_height = slide_min_height | replace: 'auto', '25rem'
       assign slide_min_height_desktop = slide_min_height_desktop | replace: 'auto', '45rem'
+    when 'aspect_ratio'
+      if aspect_ratio != blank
+        assign aspect_ratio_css = aspect_ratio | replace: ':', '/'
+        assign slide_aspect_ratio = '--slide-aspect-ratio: ' | append: aspect_ratio_css | append: ';'
+        assign class = class | append: ' slideshow--aspect-ratio' | strip
+      endif
   endcase
 
   case slide_position
@@ -61,7 +69,7 @@
       assign align_items = '--slideshow-align-items: stretch;'
   endcase
 
-  assign style = style | strip | strip_newlines | append: align_items | append: slide_min_height | append: slide_min_height_desktop
+  assign style = style | strip | strip_newlines | append: align_items | append: slide_min_height | append: slide_min_height_desktop | append: slide_aspect_ratio
 -%}
 
 {%- liquid
@@ -126,5 +134,25 @@
 
   .slideshow--stretch-content slideshow-slides > * {
     height: auto;
+  }
+
+  /* Aspect ratio mode */
+  .slideshow--aspect-ratio slideshow-slides {
+    min-height: auto;
+    aspect-ratio: var(--slide-aspect-ratio, 16/9);
+  }
+
+  .slideshow--aspect-ratio slideshow-slide {
+    height: 100%;
+  }
+
+  .slideshow--aspect-ratio slideshow-slide .slide__media,
+  .slideshow--aspect-ratio slideshow-slide .slide__media img,
+  .slideshow--aspect-ratio slideshow-slide .slide__media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 {% endstylesheet %}

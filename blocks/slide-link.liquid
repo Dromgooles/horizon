@@ -23,6 +23,17 @@
 {%- endif -%}
 
 {% stylesheet %}
+  /* Ensure slideshow-slide is the positioning context for the link overlay */
+  slideshow-slide {
+    position: relative;
+  }
+
+  /* Remove positioning context from all intermediate containers when slide has a link */
+  slideshow-slide:has(.slide__link-overlay) .slide__content,
+  slideshow-slide:has(.slide__link-overlay) .group-block-content {
+    position: static;
+  }
+
   .slide__link-overlay {
     position: absolute;
     inset: 0;
@@ -36,14 +47,9 @@
     outline-offset: -2px;
   }
 
-  /* When a slide has a link overlay, ensure proper layering */
-  slideshow-slide:has(.slide__link-overlay) .slide__content {
-    pointer-events: none;
-  }
-
-  slideshow-slide:has(.slide__link-overlay) .slide__content a,
+  /* Allow buttons/links inside content to still be clickable above the overlay */
+  slideshow-slide:has(.slide__link-overlay) .slide__content a:not(.slide__link-overlay),
   slideshow-slide:has(.slide__link-overlay) .slide__content button {
-    pointer-events: auto;
     position: relative;
     z-index: calc(var(--layer-raised) + 1);
   }
