@@ -81,7 +81,7 @@
               "type": "slide-link",
               "name": "Slide link",
               "settings": {
-                "link": "",
+                "link": "https://dromgooles.com",
                 "link_label": "View",
                 "open_in_new_tab": false
               },
@@ -161,7 +161,7 @@
               "type": "slide-link",
               "name": "Slide link",
               "settings": {
-                "link": "",
+                "link": "https://www.dromgooles.com/search?q=liscio",
                 "link_label": "View",
                 "open_in_new_tab": false
               },
@@ -201,7 +201,7 @@
               "type": "slide-link",
               "name": "Slide link",
               "settings": {
-                "link": "",
+                "link": "https://www.dromgooles.com/search?q=superman",
                 "link_label": "View",
                 "open_in_new_tab": false
               },
@@ -241,7 +241,7 @@
               "type": "slide-link",
               "name": "Slide link",
               "settings": {
-                "link": "",
+                "link": "https://www.dromgooles.com/search?q=emily+in+paris",
                 "link_label": "View",
                 "open_in_new_tab": false
               },
