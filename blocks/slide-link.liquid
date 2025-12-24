@@ -1,0 +1,77 @@
+{%- doc -%}
+  Renders a clickable link overlay for slides.
+  This block should only be used inside slide blocks (_slide, _dro-slide).
+  When present, makes the entire slide clickable.
+
+  @example
+  Add this block to a slide to make the entire slide link to a URL.
+{%- enddoc -%}
+
+{%- if block.settings.link != blank -%}
+  <a 
+    href="{{ block.settings.link }}"
+    class="slide__link-overlay"
+    {% if block.settings.open_in_new_tab %}
+      target="_blank"
+      rel="noopener noreferrer"
+    {% endif %}
+    aria-label="{{ block.settings.link_label | default: 'View' | escape }}"
+    {{ block.shopify_attributes }}
+  >
+    <span class="visually-hidden">{{ block.settings.link_label | default: 'View' }}</span>
+  </a>
+{%- endif -%}
+
+{% stylesheet %}
+  .slide__link-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-raised);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .slide__link-overlay:focus-visible {
+    outline: 2px solid rgb(var(--color-focus));
+    outline-offset: -2px;
+  }
+
+  /* When a slide has a link overlay, ensure proper layering */
+  slideshow-slide:has(.slide__link-overlay) .slide__content {
+    pointer-events: none;
+  }
+
+  slideshow-slide:has(.slide__link-overlay) .slide__content a,
+  slideshow-slide:has(.slide__link-overlay) .slide__content button {
+    pointer-events: auto;
+    position: relative;
+    z-index: calc(var(--layer-raised) + 1);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Slide link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "info": "Accessibility text for screen readers",
+      "default": "View"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open in new tab",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

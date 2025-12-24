@@ -4,6 +4,12 @@
   {% else %}
     {% assign autoplay = false %}
   {% endif %}
+  {% liquid
+    assign controls_on_media = true
+    if section.settings.controls_position == 'below'
+      assign controls_on_media = false
+    endif
+  %}
   {% capture controls %}
     {%- render 'slideshow-controls',
       style: section.settings.slideshow_controls_style,
@@ -11,7 +17,7 @@
       item_count: section.blocks.size,
       show_arrows: false,
       arrows_on_media: true,
-      controls_on_media: true,
+      controls_on_media: controls_on_media,
       pagination_position: 'center',
       icon_style: section.settings.icons_style
     -%}
@@ -359,6 +365,23 @@
         }
       ],
       "default": "dots"
+    },
+    {
+      "type": "select",
+      "id": "controls_position",
+      "label": "Pagination position",
+      "options": [
+        {
+          "value": "on_media",
+          "label": "On media"
+        },
+        {
+          "value": "below",
+          "label": "Below media"
+        }
+      ],
+      "default": "on_media",
+      "visible_if": "{{ section.settings.slideshow_controls_style != 'none' }}"
     },
     {
       "type": "checkbox",

@@ -158,6 +158,18 @@
   .slide__image-container > .slide__video-poster {
     position: absolute;
   }
+
+  .slide__media-link {
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-raised);
+    cursor: pointer;
+  }
+
+  .slide__media-link:focus-visible {
+    outline: 2px solid rgb(var(--color-focus));
+    outline-offset: -2px;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -165,6 +177,9 @@
   "name": "t:names.slide",
   "tag": null,
   "blocks": [
+    {
+      "type": "slide-link"
+    },
     {
       "type": "_heading"
     },
