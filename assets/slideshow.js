@@ -237,7 +237,7 @@ export class Slideshow extends Component {
         trigger: 'select',
         slide,
         id: slide.getAttribute('slide-id'),
-      })
+      }),
     );
   }
 
@@ -550,7 +550,7 @@ export class Slideshow extends Component {
         trigger: 'scroll',
         slide,
         id: slide.getAttribute('slide-id'),
-      })
+      }),
     );
   };
 
@@ -711,7 +711,7 @@ export class Slideshow extends Component {
           trigger: 'drag',
           slide: newSlide,
           id: newSlide.getAttribute('slide-id'),
-        })
+        }),
       );
 
       this.current = newIndex;
@@ -814,7 +814,7 @@ export class Slideshow extends Component {
         threshold: SLIDE_VISIBLITY_THRESHOLD,
         // Add small margin to account for sub-pixel rendering
         rootMargin: '1px',
-      }
+      },
     );
 
     // Observe all slides - observer will fire initial callback asynchronously
