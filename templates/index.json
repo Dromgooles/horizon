@@ -76,7 +76,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_cVEfdY": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_cVEfdY"
+          ]
         },
         "slide_btcnXU": {
           "type": "_slide",
@@ -102,7 +116,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_zdFzCw": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_zdFzCw"
+          ]
         },
         "slide_MNcP9z": {
           "type": "_slide",
@@ -128,7 +156,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_6GqYcT": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_6GqYcT"
+          ]
         },
         "slide_tNrC4j": {
           "type": "_slide",
@@ -154,7 +196,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_hfPBty": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_hfPBty"
+          ]
         },
         "slide_T43WMH": {
           "type": "_slide",
@@ -180,7 +236,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_Jh8p96": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_Jh8p96"
+          ]
         }
       },
       "block_order": [
@@ -199,6 +269,7 @@
         "slideshow_gap": 12,
         "corner_radius": 8,
         "slide_height": "small",
+        "aspect_ratio": "16:9",
         "content_position": "on-media",
         "color_scheme": "",
         "icons_style": "chevron_large",
