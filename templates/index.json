@@ -36,7 +36,21 @@
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
-          "blocks": {}
+          "blocks": {
+            "slide_link_abmq9H": {
+              "type": "slide-link",
+              "name": "Slide link",
+              "settings": {
+                "link": "shopify://products/esterbrook-the-travel-journal-workshop-set-collection-1",
+                "link_label": "View",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "slide_link_abmq9H"
+          ]
         },
         "slide_z6Yebx": {
           "type": "_slide",
